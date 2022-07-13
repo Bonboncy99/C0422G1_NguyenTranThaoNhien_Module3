@@ -1,5 +1,7 @@
+DROP DATABASE IF EXISTS student_management;
 create database student_management; 
 use student_management;
+
 CREATE TABLE student (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50),

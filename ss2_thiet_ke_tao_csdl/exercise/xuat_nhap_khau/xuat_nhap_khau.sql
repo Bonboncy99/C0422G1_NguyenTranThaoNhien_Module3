@@ -31,7 +31,9 @@ CREATE TABLE chi_tiet_phieu_nhap (
 
 CREATE TABLE don_dat_hang (
     so_don_hang INT PRIMARY KEY,
-    ngay_dat_hang DATETIME
+    ngay_dat_hang DATETIME,
+    ma_nha_cung_cap int not null,
+    foreign key(ma_nha_cung_cap) references nha_cung_cap(ma_nha_cung_cap)
 );
 
 CREATE TABLE nha_cung_cap (
@@ -69,12 +71,3 @@ CREATE TABLE chi_tiet_don_dat_hang (
         REFERENCES vat_tu (ma_vat_tu)
 );
 
-CREATE TABLE cung_cap (
-    so_don_hang INT NOT NULL,
-    ma_nha_cung_cap INT NOT NULL,
-    PRIMARY KEY (so_don_hang , ma_nha_cung_cap),
-    FOREIGN KEY (so_don_hang)
-        REFERENCES don_dat_hang (so_don_hang),
-    FOREIGN KEY (ma_nha_cung_cap)
-        REFERENCES nha_cung_cap (ma_nha_cung_cap)
-);

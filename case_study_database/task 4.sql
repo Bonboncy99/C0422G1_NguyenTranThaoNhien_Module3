@@ -25,10 +25,7 @@ FROM
 WHERE
     n.ho_ten LIKE 'h%' OR n.ho_ten LIKE 't%'
         OR n.ho_ten LIKE 'k%'
-        AND CHAR_LENGTH(n.ho_ten) <= 15;
-
-
--- 3. 	Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi 
+        AND CHAR_LENGTH(n.ho_ten) <= 15 độ tuổi từ 18 đến 50 tuổi 
 -- 		và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
 
 select k.ma_khach_hang,k.ho_ten,k.ngay_sinh,k.gioi_tinh,k.so_cmnd,k.so_dien_thoai, k.email, k.dia_chi, l.ten_loai_khach
@@ -50,15 +47,20 @@ where  TIMESTAMPDIFF(YEAR,
 -- 4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần. 
 -- Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng. 
 -- Chỉ đếm những khách hàng nào có Tên loại khách hàng là “Diamond”.
-select k.ma_khach_hang, k.ho_ten, count(h.ma_khach_hang) as 'so_lan_dat_phong'
-from hop_dong h
-join  khach_hang k
-on k.ma_khach_hang=h.ma_khach_hang
-join loai_khach l
-on k.ma_loai_khach = l.ma_loai_khach
-where l.ten_loai_khach = 'Diamond'
-group by  h.ma_khach_hang
-order by so_lan_dat_phong;
+SELECT 
+    k.ma_khach_hang,
+    k.ho_ten,
+    COUNT(h.ma_khach_hang) AS 'so_lan_dat_phong'
+FROM
+    hop_dong h
+        JOIN
+    khach_hang k ON k.ma_khach_hang = h.ma_khach_hang
+        JOIN
+    loai_khach l ON k.ma_loai_khach = l.ma_loai_khach
+WHERE
+    l.ten_loai_khach = 'Diamond'
+GROUP BY h.ma_khach_hang
+ORDER BY so_lan_dat_phong;
 
 
 -- 5.	Hiển thị ma_khach_hang, ho_ten, ten_loai_khach, ma_hop_dong,
@@ -68,16 +70,25 @@ order by so_lan_dat_phong;
 -- cho tất cả các khách hàng đã từng đặt phòng. 
 -- (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
 
-select k.ma_khach_hang, k.ho_ten, l.ten_loai_khach,h.ma_hop_dong,d.ten_dich_vu, h.ngay_lam_hop_dong,h.ngay_ket_thuc,sum(d.chi_phi_thue +hc.so_luong*dvdk.gia) as tong_tien
-from hop_dong_chi_tiet hc
-join hop_dong h
-on hc.ma_hop_dong = h.ma_hop_dong
-right join khach_hang k
-on h.ma_khach_hang = k.ma_khach_hang
-join loai_khach l
-on l.ma_loai_khach = k.ma_loai_khach
-join dich_vu d
-on d.ma_dich_vu = h.ma_dich_vu
-join dich_vu_di_kem dvdk
-on hc.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem;
+SELECT 
+    k.ma_khach_hang,
+    k.ho_ten,
+    l.ten_loai_khach,
+    h.ma_hop_dong,
+    d.ten_dich_vu,
+    h.ngay_lam_hop_dong,
+    h.ngay_ket_thuc,
+    SUM(d.chi_phi_thue + hc.so_luong * dvdk.gia) AS tong_tien
+FROM
+    hop_dong_chi_tiet hc
+        JOIN
+    hop_dong h ON hc.ma_hop_dong = h.ma_hop_dong
+        RIGHT JOIN
+    khach_hang k ON h.ma_khach_hang = k.ma_khach_hang
+        JOIN
+    loai_khach l ON l.ma_loai_khach = k.ma_loai_khach
+        JOIN
+    dich_vu d ON d.ma_dich_vu = h.ma_dich_vu
+        JOIN
+    dich_vu_di_kem dvdk ON hc.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem;
 

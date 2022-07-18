@@ -25,14 +25,26 @@ FROM
 WHERE
     n.ho_ten LIKE 'h%' OR n.ho_ten LIKE 't%'
         OR n.ho_ten LIKE 'k%'
-        AND CHAR_LENGTH(n.ho_ten) <= 15 độ tuổi từ 18 đến 50 tuổi 
--- 		và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
+        AND CHAR_LENGTH(n.ho_ten) <= 15;
 
-select k.ma_khach_hang,k.ho_ten,k.ngay_sinh,k.gioi_tinh,k.so_cmnd,k.so_dien_thoai, k.email, k.dia_chi, l.ten_loai_khach
-from khach_hang k 
-join loai_khach l
-on k.ma_loai_khach = l.ma_loai_khach
-where  TIMESTAMPDIFF(YEAR,
+
+-- 3.	Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị” 
+SELECT 
+    k.ma_khach_hang,
+    k.ho_ten,
+    k.ngay_sinh,
+    k.gioi_tinh,
+    k.so_cmnd,
+    k.so_dien_thoai,
+    k.email,
+    k.dia_chi,
+    l.ten_loai_khach
+FROM
+    khach_hang k
+        JOIN
+    loai_khach l ON k.ma_loai_khach = l.ma_loai_khach
+WHERE
+    TIMESTAMPDIFF(YEAR,
         k.ngay_sinh,
         DATE(NOW())) > 18
         AND TIMESTAMPDIFF(YEAR,
@@ -40,8 +52,7 @@ where  TIMESTAMPDIFF(YEAR,
         DATE(NOW())) < 50
         AND k.dia_chi LIKE '%đà nẵng'
         OR k.dia_chi LIKE '%quảng trị';
---  k.dia_chi like '%Đà Nẵng' or k.dia_chi like '%Quảng Trị' 
---  and (year(current_date()) - year(k.ngay_sinh)) between 18 and 50;
+
 
 
 -- 4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần. 
@@ -70,7 +81,7 @@ ORDER BY so_lan_dat_phong;
 -- cho tất cả các khách hàng đã từng đặt phòng. 
 -- (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
 
-SELECT 
+SELECT
     k.ma_khach_hang,
     k.ho_ten,
     l.ten_loai_khach,
@@ -78,17 +89,18 @@ SELECT
     d.ten_dich_vu,
     h.ngay_lam_hop_dong,
     h.ngay_ket_thuc,
-    SUM(d.chi_phi_thue + hc.so_luong * dvdk.gia) AS tong_tien
+    SUM(d.chi_phi_thue + ifnull(hc.so_luong * dvdk.gia,0)) AS tong_tien
 FROM
-    hop_dong_chi_tiet hc
-        JOIN
-    hop_dong h ON hc.ma_hop_dong = h.ma_hop_dong
-        RIGHT JOIN
-    khach_hang k ON h.ma_khach_hang = k.ma_khach_hang
-        JOIN
-    loai_khach l ON l.ma_loai_khach = k.ma_loai_khach
-        JOIN
-    dich_vu d ON d.ma_dich_vu = h.ma_dich_vu
-        JOIN
-    dich_vu_di_kem dvdk ON hc.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem;
+khach_hang k
+left join loai_khach l ON l.ma_loai_khach = k.ma_loai_khach
+left join hop_dong h on h.ma_khach_hang  = k.ma_khach_hang
+left join hop_dong_chi_tiet hc on hc.ma_hop_dong = h.ma_hop_dong
+left join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem =hc.ma_dich_vu_di_kem
+left join dich_vu d on d.ma_dich_vu = h.ma_dich_vu
+group by ma_hop_dong
+order by ma_khach_hang, ma_hop_dong desc;
 
+
+
+
+  

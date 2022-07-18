@@ -7,7 +7,9 @@ SELECT
 FROM
     student
 WHERE
-    student_name LIKE 'h%'tin lớp học có thời gian bắt đầu vào tháng 12.
+    student_name LIKE 'h%';
+    
+    
 SELECT 
     *
 FROM

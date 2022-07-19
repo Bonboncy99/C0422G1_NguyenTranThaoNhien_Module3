@@ -22,16 +22,17 @@ value (11,'Banh',10,2,'Banh de an', 1),
     
 -- Bước 3. Tạo Unique Index trên bảng Products (sử dụng cột productCode để tạo chỉ mục)
 -- Tạo Composite Index trên bảng Products (sử dụng 2 cột productName và productPrice)
-	create unique index i_code on products(product_code);
-	create  index i_composite_product on products(product_name,product_code);
+create unique index i_code on products(product_code);
+create  index i_composite_product on products(product_name,product_code);
     
-	 drop index i_code on products;
-     drop index i_composite_product on products;
+drop index i_code on products;
+drop index i_composite_product on products;
 
-    explain select * from products 
-    where products.product_code = 14;
-	explain select * from products 
-    where products.product_name = 'sua' and products.product_price = 40;
+explain select * from products 
+where products.product_code = 14;
+
+explain select * from products 
+where products.product_name = 'sua' and products.product_price = 40;
     
     
 -- Bước 4: Tạo view lấy về các thông tin: productCode, productName, productPrice, productStatus từ bảng products.
@@ -54,11 +55,11 @@ drop view product_view;
 -- Bước 5
 -- 1. Tạo store procedure lấy tất cả thông tin của tất cả các sản phẩm trong bảng product
 delimiter //
-	create procedure find_all_products()
-    begin
-		select * from products;
-    end//
-    delimiter ;
+create procedure find_all_products()
+begin
+	select * from products;
+end//
+delimiter ;
 
 call find_all_products();
 
@@ -92,7 +93,7 @@ call update_products(3,161,'Thuoc1',20.5,20,'Thuoc ha sot1',1);
 delimiter //
 create procedure delete_by_id(id_delete int) 
 begin 
-	delete  from products
+	delete from products
 	where id = id_delete;
 end //
 delimiter ;

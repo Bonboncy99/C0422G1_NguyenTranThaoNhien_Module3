@@ -43,11 +43,16 @@ FROM
         LEFT JOIN
     hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
 WHERE
-    (YEAR(hd.ngay_lam_hop_dong) = 2020
-        AND QUARTER(hd.ngay_lam_hop_dong) = 4)
-        AND NOT (YEAR(hd.ngay_lam_hop_dong) = 2021
-        AND QUARTER(hd.ngay_lam_hop_dong) IN (1 , 2))
-GROUP BY hdct.ma_hop_dong;
+    YEAR(hd.ngay_lam_hop_dong) = 2020
+        AND QUARTER(hd.ngay_lam_hop_dong) = 4
+        AND hd.ma_dich_vu NOT IN (SELECT 
+            hd1.ma_dich_vu
+        FROM
+            hop_dong hd1
+        WHERE
+            YEAR(hd1.ngay_lam_hop_dong) = 2021
+                AND QUARTER(hd1.ngay_lam_hop_dong) IN (1 , 2))
+GROUP BY hd.ma_hop_dong;
 
 
 -- 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng.

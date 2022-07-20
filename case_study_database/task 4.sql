@@ -81,7 +81,7 @@ ORDER BY so_lan_dat_phong;
 -- cho tất cả các khách hàng đã từng đặt phòng. 
 -- (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
 
-SELECT
+SELECT 
     k.ma_khach_hang,
     k.ho_ten,
     l.ten_loai_khach,
@@ -89,16 +89,21 @@ SELECT
     d.ten_dich_vu,
     h.ngay_lam_hop_dong,
     h.ngay_ket_thuc,
-    SUM(d.chi_phi_thue + ifnull(hc.so_luong * dvdk.gia,0)) AS tong_tien
+    SUM(d.chi_phi_thue + IFNULL(hc.so_luong * dvdk.gia, 0)) AS tong_tien
 FROM
-khach_hang k
-left join loai_khach l ON l.ma_loai_khach = k.ma_loai_khach
-left join hop_dong h on h.ma_khach_hang  = k.ma_khach_hang
-left join hop_dong_chi_tiet hc on hc.ma_hop_dong = h.ma_hop_dong
-left join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem =hc.ma_dich_vu_di_kem
-left join dich_vu d on d.ma_dich_vu = h.ma_dich_vu
-group by ma_hop_dong
-order by ma_khach_hang, ma_hop_dong desc;
+    khach_hang k
+        LEFT JOIN
+    loai_khach l ON l.ma_loai_khach = k.ma_loai_khach
+        LEFT JOIN
+    hop_dong h ON h.ma_khach_hang = k.ma_khach_hang
+        LEFT JOIN
+    hop_dong_chi_tiet hc ON hc.ma_hop_dong = h.ma_hop_dong
+        LEFT JOIN
+    dich_vu_di_kem dvdk ON dvdk.ma_dich_vu_di_kem = hc.ma_dich_vu_di_kem
+        LEFT JOIN
+    dich_vu d ON d.ma_dich_vu = h.ma_dich_vu
+GROUP BY k.ma_khach_hang , h.ma_hop_dong
+ORDER BY ma_khach_hang , ma_hop_dong DESC;
 
 
 

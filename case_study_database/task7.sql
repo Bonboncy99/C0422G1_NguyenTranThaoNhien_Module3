@@ -14,17 +14,21 @@ set sql_safe_updates = 1;
 -- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán
 --  trong năm 2021 là lớn hơn 1.000.000 VNĐ
 
+
+
+
+
 UPDATE khach_hang 
 SET 
     ma_loai_khach = 1
-WHERE
+WHERE ma_loai_khach =2 and 
     ma_khach_hang IN (SELECT 
             ma_khach_hang
         FROM
             (SELECT 
                 kh.ma_khach_hang,
                     kh.ho_ten,
-                    SUM(dv.chi_phi_thue + IFNULL(hdct.so_luong * dvdk.gia, 0)) AS tong_tien
+                    dv.chi_phi_thue + IFNULL(hdct.so_luong * dvdk.gia, 0) AS tong_tien
             FROM
                 khach_hang kh
             LEFT JOIN hop_dong hd ON hd.ma_khach_hang = kh.ma_khach_hang
@@ -94,7 +98,7 @@ SELECT
 FROM
     nhan_vien 
 UNION SELECT 
-    ma_khach_hang AS id,
+    ma_khach_hang,
     ho_ten,
     email,
     so_dien_thoai,

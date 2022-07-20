@@ -57,7 +57,7 @@ SELECT
     dv.ten_dich_vu,
     hd.ngay_lam_hop_dong,
     hd.ngay_ket_thuc,
-    SUM(dv.chi_phi_thue + IFNULL(hdct.so_luong * dvdk.gia, 0)) AS tong_tien
+    dv.chi_phi_thue + IFNULL(sum(hdct.so_luong * dvdk.gia), 0) AS tong_tien
 FROM
     khach_hang kh
         LEFT JOIN
@@ -70,7 +70,7 @@ FROM
     hop_dong_chi_tiet hdct ON hdct.ma_hop_dong = hd.ma_hop_dong
         LEFT JOIN
     dich_vu_di_kem dvdk ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
-GROUP BY hd.ma_hop_dong
+GROUP BY hd.ma_hop_dong, kh.ma_khach_hang
 ORDER BY kh.ma_khach_hang , hd.ma_hop_dong DESC;
 
     
@@ -208,17 +208,36 @@ WHERE
 --  từng được khách hàng đặt vào 3 tháng cuối năm 2020 nhưng chưa từng được khách hàng
 --  đặt vào 6 tháng đầu năm 2021.
 
-select hd.ma_hop_dong, nv.ho_ten, kh.ho_ten, kh.so_dien_thoai, dv.ma_dich_vu, dv.ten_dich_vu, ifnull(sum(hdct.so_luong),0)  as so_luong_dich_vu_di_kem,hd.tien_dat_coc
-from hop_dong hd
-left join dich_vu dv on dv.ma_dich_vu = hd.ma_dich_vu
-left join hop_dong_chi_tiet hdct on hdct.ma_hop_dong= hd.ma_hop_dong
-left join khach_hang kh on kh.ma_khach_hang = hd.ma_khach_hang
-left join nhan_vien nv on nv.ma_nhan_vien = hd.ma_nhan_vien
-where year(hd.ngay_lam_hop_dong) = 2020 and quarter(hd.ngay_lam_hop_dong) = 4
-and hd.ma_dich_vu not in (select hd1.ma_dich_vu
-from hop_dong hd1
-where year(hd1.ngay_lam_hop_dong) = 2021 and quarter(hd1.ngay_lam_hop_dong) in (1,2))
-group by hd.ma_hop_dong;
+SELECT 
+    hd.ma_hop_dong,
+    nv.ho_ten,
+    kh.ho_ten,
+    kh.so_dien_thoai,
+    dv.ma_dich_vu,
+    dv.ten_dich_vu,
+    IFNULL(SUM(hdct.so_luong), 0) AS so_luong_dich_vu_di_kem,
+    hd.tien_dat_coc
+FROM
+    hop_dong hd
+        LEFT JOIN
+    dich_vu dv ON dv.ma_dich_vu = hd.ma_dich_vu
+        LEFT JOIN
+    hop_dong_chi_tiet hdct ON hdct.ma_hop_dong = hd.ma_hop_dong
+        LEFT JOIN
+    khach_hang kh ON kh.ma_khach_hang = hd.ma_khach_hang
+        LEFT JOIN
+    nhan_vien nv ON nv.ma_nhan_vien = hd.ma_nhan_vien
+WHERE
+    YEAR(hd.ngay_lam_hop_dong) = 2020
+        AND QUARTER(hd.ngay_lam_hop_dong) = 4
+        AND hd.ma_dich_vu NOT IN (SELECT 
+            hd1.ma_dich_vu
+        FROM
+            hop_dong hd1
+        WHERE
+            YEAR(hd1.ngay_lam_hop_dong) = 2021
+                AND QUARTER(hd1.ngay_lam_hop_dong) IN (1 , 2))
+GROUP BY hd.ma_hop_dong;
 
 
 -- 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất 
@@ -298,6 +317,10 @@ set sql_safe_updates = 1;
 
 
 -- 17.	Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
+
+set sql_safe_updates = 0;
+set foreign_key_checks = 0;
+
 UPDATE khach_hang 
 SET 
     ma_loai_khach = 1
@@ -308,7 +331,7 @@ WHERE
             (SELECT 
                 kh.ma_khach_hang,
                     kh.ho_ten,
-                    SUM(dv.chi_phi_thue + IFNULL(hdct.so_luong * dvdk.gia, 0)) AS tong_tien
+                    dv.chi_phi_thue + IFNULL(hdct.so_luong * dvdk.gia, 0) AS tong_tien
             FROM
                 khach_hang kh
             LEFT JOIN hop_dong hd ON hd.ma_khach_hang = kh.ma_khach_hang
@@ -317,8 +340,15 @@ WHERE
             LEFT JOIN dich_vu_di_kem dvdk ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
             WHERE
                 kh.ma_loai_khach = 2
-            GROUP BY hd.ma_hop_dong
-            HAVING tong_tien > 1000000) AS temp);
+            GROUP BY hd.ma_khach_hang
+            HAVING tong_tien > 10000000) AS temp);
+set foreign_key_checks = 1;
+set sql_safe_updates = 1;
+
+
+
+
+
 
 
 
@@ -336,6 +366,8 @@ set sql_safe_updates = 1;
 
 
 -- 19.	Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
+set sql_safe_updates = 0;
+set foreign_key_checks = 0;
 UPDATE dich_vu_di_kem 
 SET 
     gia = gia * 2
@@ -353,7 +385,8 @@ WHERE
             GROUP BY ma_dich_vu_di_kem
             HAVING so_lan_su_dung > 10) AS temp);
 
-
+set sql_safe_updates = 1;
+set foreign_key_checks = 1;
 
 
 -- 20.	Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.

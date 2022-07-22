@@ -1,0 +1,63 @@
+
+body {
+    background: url("https://1.bigdata-vn.com/wp-content/uploads/2021/10/50-Hinh-nen-cute-dep-nhat.jpg") repeat;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    background: palevioletred;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0;
+}
+
+h3{
+    font-size: 30px;
+    color: red;
+}
+
+p {
+    font-size: 25px;
+    font-family: Arial;
+    font-weight: 600
+}
+
+
+
+a {
+    font-size: 25px;
+    text-decoration: none;}
+
+#muc_luc {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    text-align: center;
+}
+
+
+img {
+    width: 250px;
+}
+
+img:hover {
+    opacity: 0.5;
+}
+
+.truyen {
+    text-align: justify;
+    width: 1000px;
+    margin: 50px auto;
+}
+
+.truyen img {
+
+}
+
+
+

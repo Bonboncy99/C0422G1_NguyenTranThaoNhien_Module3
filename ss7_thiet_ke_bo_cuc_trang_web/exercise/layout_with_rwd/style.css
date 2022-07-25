@@ -1,0 +1,96 @@
+body{
+    font-family: Arial sans-serif;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+header, footer {
+    height: 46px;
+    background-color: #222;
+    color: #cdcdcd;
+}
+
+/*header{*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    width: 100%;*/
+/*}*/
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+nav div {
+    height: 46px;
+    float: left;
+    line-height: 46px;
+    padding: 0 24px;
+}
+nav div:first-child{
+    float: left;
+}
+
+nav div:last-child{
+    float: right;
+}
+nav ul {
+    display: inline;
+}
+nav ul li {
+    display: inline-block;
+    line-height: 46px;
+    padding: 0 12px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #cdcdcd;
+}
+
+nav li:hover {
+    background: black;
+
+}
+
+nav li:hover a{
+    color: white;
+}
+
+
+.left {
+    float: left;
+    width: 15%;
+    height: 500px;
+    background: #f1f1f1;
+}
+
+.main-content {
+    float: left;
+    width: 70%;
+    height: 500px;
+}
+
+.advertise {
+    float: left;
+    width: 15%;
+    height: 500px;
+    background: #f1f1f1;
+}
+
+.advertise div {
+    width: 80%;
+    height: 50px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    color: black;
+    display: flex;
+    margin: 15px auto;
+}
+
+.advertise div p {
+    margin: auto;
+}

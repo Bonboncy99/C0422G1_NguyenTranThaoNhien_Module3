@@ -4,7 +4,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "productDiscountServlet", value = "/productDiscount")
-public class productDiscountServlet extends HttpServlet {
+public class ProductDiscountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,7 +27,5 @@ public class productDiscountServlet extends HttpServlet {
         request.setAttribute("discountPrice",discountPrice);
 
         requestDispatcher.forward(request,response);
-
-
     }
 }

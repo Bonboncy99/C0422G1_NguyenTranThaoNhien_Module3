@@ -1,9 +1,13 @@
+package servlet;
+
+import service.CalcutatorService;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "CalculatorServlet", value = "/calculator")
+@WebServlet(name = "servlet.CalculatorServlet", value = "/calculator")
 public class CalculatorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -16,7 +20,7 @@ public class CalculatorServlet extends HttpServlet {
         double num2 = Double.parseDouble(request.getParameter("second_operand"));
         String operator = request.getParameter("Operator");
 
-        Calcutator calcutator = new Calcutator();
+        CalcutatorService calcutator = new CalcutatorService();
         String result = calcutator.calculate(num1, num2, operator);
         request.setAttribute("num1", num1);
         request.setAttribute("num2", num2);

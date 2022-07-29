@@ -1,30 +1,7 @@
-public class Calcutator {
-    private  double numFirst;
-    private double numSecond;
+package service;
 
-    public Calcutator(double numFirst, double numSecond) {
-        this.numFirst = numFirst;
-        this.numSecond = numSecond;
-    }
+public class CalcutatorService {
 
-    public Calcutator() {
-    }
-
-    public double getNumFirst() {
-        return numFirst;
-    }
-
-    public void setNumFirst(double numFirst) {
-        this.numFirst = numFirst;
-    }
-
-    public double getNumSecond() {
-        return numSecond;
-    }
-
-    public void setNumSecond(double numSecond) {
-        this.numSecond = numSecond;
-    }
 
     public String getAddition(double a, double b) {
         double result = a + b;

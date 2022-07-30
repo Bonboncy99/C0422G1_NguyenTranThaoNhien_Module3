@@ -32,8 +32,9 @@ CREATE TABLE chi_tiet_phieu_nhap (
 CREATE TABLE don_dat_hang (
     so_don_hang INT PRIMARY KEY,
     ngay_dat_hang DATETIME,
-    ma_nha_cung_cap int not null,
-    foreign key(ma_nha_cung_cap) references nha_cung_cap(ma_nha_cung_cap)
+    ma_nha_cung_cap INT NOT NULL,
+    FOREIGN KEY (ma_nha_cung_cap)
+        REFERENCES nha_cung_cap (ma_nha_cung_cap)
 );
 
 CREATE TABLE nha_cung_cap (

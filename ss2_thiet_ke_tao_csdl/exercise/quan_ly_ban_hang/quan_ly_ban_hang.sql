@@ -17,18 +17,19 @@ CREATE TABLE `order` (
         REFERENCES customer (customer_id)
 );
 
-CREATE TABLE producecustomercustomer (
-    produce_id INT PRIMARY KEY,
-    produce_name VARCHAR(50),
-    produce_price DOUBLE
+CREATE TABLE product (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(50),
+    product_price DOUBLE
 );
 
 CREATE TABLE order_detail (
-    produce_id INT,
+    product_id INT,
     order_id INT,
-    PRIMARY KEY (produce_id , order_id),
-    FOREIGN KEY (produce_id)
-        REFERENCES produce (produce_id),
+    quantity INT,
+    PRIMARY KEY (product_id , order_id),
+    FOREIGN KEY (product_id)
+        REFERENCES product (product_id),
     FOREIGN KEY (order_id)
         REFERENCES `order` (order_id)
 );

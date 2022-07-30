@@ -14,6 +14,10 @@
 <body>
 <h1>Danh sách sản phẩm</h1>
 <a href="/product?action=add">Thêm mới sản phẩm</a>
+<form action="/product?action=search" method="post">
+    <input type="text" placeholder="Tìm kiếm sản phẩm theo tên" name="search">
+    <button type="submit">tìm Kiếm</button>
+</form>
 <table border="1">
     <tr>
         <td>ID</td>
@@ -26,7 +30,7 @@
     <c:forEach var="product" items="${productList}">
         <tr>
             <td>${product.id}</td>
-            <td>${product.name}</td>
+            <td><a href="/product?action=view&id=${product.id}">${product.name}</a></td>
             <td>${product.price}</td>
             <td>${product.description}</td>
             <td>${product.producer}</td>

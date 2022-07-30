@@ -11,4 +11,5 @@ public interface IRepositoryService {
     void add(Product product);
     Product findById(int id);
     Product productDetail(int id);
+    List<Product> searchByName(String name);
 }

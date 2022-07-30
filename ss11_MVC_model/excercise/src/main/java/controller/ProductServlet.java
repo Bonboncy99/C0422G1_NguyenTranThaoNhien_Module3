@@ -30,9 +30,27 @@ public class ProductServlet extends HttpServlet {
             case "delete":
                 showDeleteProduct(request,response);
                 break;
+            case "view":
+                showViewProduct(request,response);
+                break;
             default:
                 showListProduce(request,response);
         }
+    }
+
+    private void showViewProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        request.setAttribute("product",product);
+        RequestDispatcher requestDispatcher =request.getRequestDispatcher("view/product/view.jsp") ;
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void showDeleteProduct(HttpServletRequest request, HttpServletResponse response) {
@@ -115,7 +133,28 @@ public class ProductServlet extends HttpServlet {
             case "delete":
                 deleteProduct(request,response);
                 break;
+            case "search":
+                searchProduct(request,response);
+                break;
             default:
+        }
+    }
+
+    private void searchProduct(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/product/search.jsp");
+        String name = request.getParameter("name");
+        List<Product>productList = productService.searchByName(name);
+        if (productList.isEmpty()){
+            request.setAttribute("message","Không có sản phẩm bạn muốn tìm");
+        } else {
+            request.setAttribute("productList",productList);
+        }
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/product?action=delete&id=${product.id}" method="post">
+<form method="post">
     <table border="1px">
         <tr>
             <th>Id</th>

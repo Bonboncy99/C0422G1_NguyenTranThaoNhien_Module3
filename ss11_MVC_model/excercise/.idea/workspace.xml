@@ -5,35 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b8e3af-308f-4108-9b12-5a9bfddb676b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../bbobjojjgghghh/bbobjojjgghghh.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bbobjojjgghghh/src/main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bbobjojjgghghh/src/model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bbobjojjgghghh/src/service/Iservice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/product/search.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/product/view.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../currency_converter/src/main/java/ConvertServlet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../demo_tomcat_1/src/main/java/ServerTimeServlet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../simple_dictionary/src/main/java/DictionaryServlet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../simple_login1/src/main/java/SimpleLoginServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bbobjojjgghghh/bbobjojjgghghh.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bbobjojjgghghh/src/main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bbobjojjgghghh/src/model/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bbobjojjgghghh/src/service/Iservice.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/ProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/ProductServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/IRepositoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/IRepositoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/RepositoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/RepositoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/product-management-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/product-management-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProductServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/IRepositoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/IRepositoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepositoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepositoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/IProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/product/delete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/product/delete.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/product/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/product/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/product/update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/product/update.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/product/search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/product/search.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ss1_database/furama_lam_laij/furama1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss1_database/furama_lam_laij/furama1.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ss2_thiet_ke_tao_csdl/exercise/quan_ly_ban_hang/quan_ly_ban_hang.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss2_thiet_ke_tao_csdl/exercise/quan_ly_ban_hang/quan_ly_ban_hang.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ss2_thiet_ke_tao_csdl/exercise/xuat_nhap_khau/xuat_nhap_khau.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss2_thiet_ke_tao_csdl/exercise/xuat_nhap_khau/xuat_nhap_khau.sql" afterDir="false" />
@@ -91,6 +74,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../trungđ/C0422G1_HuynhQuocTrung_Module3/ss11_mvc/exercise/Product" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -201,6 +185,8 @@
       <workItem from="1659073194943" duration="13065000" />
       <workItem from="1659093815109" duration="381000" />
       <workItem from="1659167858253" duration="6292000" />
+      <workItem from="1659174986163" duration="86000" />
+      <workItem from="1659175491235" duration="2875000" />
     </task>
     <servers />
   </component>
@@ -218,16 +204,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/ProductServlet.java</url>
-          <line>136</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

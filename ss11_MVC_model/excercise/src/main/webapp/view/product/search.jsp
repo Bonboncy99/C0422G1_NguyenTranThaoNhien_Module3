@@ -16,16 +16,15 @@
 <c:if test="${message != null}">
     <p>${message}</p>
 </c:if>
-
-<table>
+<table border="1">
     <tr>
-        <td>Id</td>
-        <td>Name</td>
-        <td>Price</td>
-        <td>Description</td>
-        <td>Producer</td>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Producer</th>
     </tr>
-    <c:forEach items="productList" var="product">
+    <c:forEach var="product" items="${productList}">
         <tr>
             <td>${product.id}</td>
             <td>${product.name}</td>

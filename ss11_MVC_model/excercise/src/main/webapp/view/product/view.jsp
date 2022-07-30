@@ -28,6 +28,8 @@
         <td>${product.producer}</td>
     </tr>
 </table>
+<%--<a href="/product?action=update">Cập nhật thông tin</a>--%>
+<%--<a href="/product?action=delete">Xóa sản phẩm</a>--%>
 <a href="/product">Quay trở lại</a>
 </body>
 </html>

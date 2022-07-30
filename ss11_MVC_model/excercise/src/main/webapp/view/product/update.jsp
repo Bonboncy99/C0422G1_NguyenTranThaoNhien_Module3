@@ -13,7 +13,7 @@
 <body>
 <h1>Cập nhật sản phẩm</h1>
 <a href="/product">Quay lại danh sách sản phẩm</a>
-<form action="/product?action=update&id=${product.id}" method="post">
+<form method="post">
     <p>Tên Sản phẩm</p>
     <input type="text" name="name" value="${product.name}">
     <p>Giá sản phẩm</p>

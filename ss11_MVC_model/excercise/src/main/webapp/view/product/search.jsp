@@ -33,7 +33,7 @@
             <td>${product.producer}</td>
         </tr>
     </c:forEach>
-    <a href="/product"></a>
+    <a href="/product">Quay lại danh sách sản phẩm</a>
 </table>
 </body>
 </html>

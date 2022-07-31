@@ -14,9 +14,9 @@
 <body>
 <h1>Danh sách sản phẩm</h1>
 <a href="/product?action=add">Thêm mới sản phẩm</a>
-<form action="/product" method="post">
+<form action="/product?action=search" method="post">
     <input type="text" placeholder="Tìm kiếm sản phẩm theo tên" name="name">
-    <button type="submit" name="action" value="search" >tìm Kiếm</button>
+    <button type="submit">tìm Kiếm</button>
 </form>
 
 <table border="1">

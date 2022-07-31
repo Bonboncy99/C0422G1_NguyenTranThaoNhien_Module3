@@ -5,27 +5,90 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b8e3af-308f-4108-9b12-5a9bfddb676b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../currency_converter/src/main/java/ConvertServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../demo_tomcat_1/src/main/java/ServerTimeServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../simple_dictionary/src/main/java/DictionaryServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../simple_login1/src/main/java/SimpleLoginServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bbobjojjgghghh/bbobjojjgghghh.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bbobjojjgghghh/src/main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bbobjojjgghghh/src/model/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bbobjojjgghghh/src/service/Iservice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/product/delete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/product/delete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/product-management-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/product-management-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProductServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/IRepositoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/IProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepositoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/impl/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/product/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/product/list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/product/search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/product/search.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ss1_database/furama_lam_laij/furama1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss1_database/furama_lam_laij/furama1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ss2_thiet_ke_tao_csdl/exercise/quan_ly_ban_hang/quan_ly_ban_hang.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss2_thiet_ke_tao_csdl/exercise/quan_ly_ban_hang/quan_ly_ban_hang.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ss2_thiet_ke_tao_csdl/exercise/xuat_nhap_khau/xuat_nhap_khau.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss2_thiet_ke_tao_csdl/exercise/xuat_nhap_khau/xuat_nhap_khau.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ss2_thiet_ke_tao_csdl/practice/quan_ly_sinh_vien.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss2_thiet_ke_tao_csdl/practice/quan_ly_sinh_vien.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ss4/exercise/bai_tap_ss4.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ss4/practice/thuc_hanh ss4.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ss8_bootstrap/bootstrap-5.0.2-dist/bootstrap-5.0.2-dist.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ss8_bootstrap/exercise/landing_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss8_bootstrap/exercise/landing_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ss9_tong_quan_ung_dung_web/practice/simple_dictionary/src/main/java/DictionaryServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss9_tong_quan_ung_dung_web/practice/simple_dictionary/src/main/java/DictionaryServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/7.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/7.1/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/7.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/7.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/build/tmp/war/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/src/main/java/CustomerServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/src/main/java/model/customer/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/src/main/java/service/CustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/src/main/java/service/CustomerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/copyJame/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/7.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/7.1/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/7.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/7.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/customer-management/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/build/classes/java/main/CustomerServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/build/classes/java/main/model/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/build/classes/java/main/service/CustomerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/build/classes/java/main/service/impl/CustomerServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/build/libs/customer-management-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/build/tmp/war/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/src/main/java/CustomerServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/src/main/java/model/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/src/main/java/service/CustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/src/main/java/service/impl/CustomerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../practice/customer-management/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/src/main/webapp/view/customer/create.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice/customer-management/src/main/webapp/view/customer/list.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +137,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../trungđ/C0422G1_HuynhQuocTrung_Module3/ss11_mvc/exercise/Product" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -86,7 +149,7 @@
       <module name="product-management.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="repository.*" />
+          <option name="PATTERN" value="repository.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -186,7 +249,7 @@
       <workItem from="1659093815109" duration="381000" />
       <workItem from="1659167858253" duration="6292000" />
       <workItem from="1659174986163" duration="86000" />
-      <workItem from="1659175491235" duration="2875000" />
+      <workItem from="1659175491235" duration="6126000" />
     </task>
     <servers />
   </component>
@@ -204,5 +267,19 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/ProductServlet.java</url>
+          <line>143</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/product_management$Tomcat_9_0_65.ic" NAME="Tomcat 9.0.65 Coverage Results" MODIFIED="1659238769662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

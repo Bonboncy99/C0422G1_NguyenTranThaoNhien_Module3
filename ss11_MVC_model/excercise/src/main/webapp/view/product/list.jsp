@@ -10,16 +10,50 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
 <body>
 <h1>Danh sách sản phẩm</h1>
 <a href="/product?action=add">Thêm mới sản phẩm</a>
+
 <form action="/product?action=search" method="post">
     <input type="text" placeholder="Tìm kiếm sản phẩm theo tên" name="name">
-    <button type="submit">tìm Kiếm</button>
+    <%--    modal button--%>
+    <button type="submit" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal">
+        Tìm kiếm
+    </button>
 </form>
 
-<table border="1">
+<c:if test="productList != null">
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Producer</th>
+        </tr>
+        <c:forEach var="product" items="${productList}">
+            <tr>
+                <td>${product.id}</td>
+                <td>${product.name}</td>
+                <td>${product.price}</td>
+                <td>${product.description}</td>
+                <td>${product.producer}</td>
+            </tr>
+        </c:forEach>
+        <a href="/product">Quay lại danh sách sản phẩm</a>
+    </table>
+</c:if>
+
+<c:if test="productList == null">
+    <p>${message}</p>
+</c:if>
+
+
+
+
+<table class="table table-striped table-hover">
     <tr>
         <td>ID</td>
         <td>Name</td>
@@ -39,7 +73,8 @@
             <td><a href="/product?action=delete&id=${product.id}">Delete</a></td>
         </tr>
     </c:forEach>
-
 </table>
+
+
 </body>
 </html>

@@ -16,7 +16,6 @@
 <h1>Thêm mới sản phẩm</h1>
 <a href="/product">Quay lại danh sách sản phẩm</a>
 <form action="/product?action=add" method="post">
-    <input type="text" name="id" placeholder="Nhập id sản phẩm">
     <input type="text" name="name" placeholder="Nhập tên sản phẩm">
     <input type="text" name="price" placeholder="Nhập giá sản phẩm">
     <input type="text" name="description" placeholder="Nhập mô tả sản phẩm">

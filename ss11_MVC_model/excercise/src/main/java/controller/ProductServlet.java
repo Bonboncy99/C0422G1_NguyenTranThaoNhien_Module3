@@ -38,6 +38,30 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null){
+            action = "";
+        }
+
+        switch (action) {
+            case "add":
+                addProduct(request,response);
+                break;
+            case "update":
+                updateProduct(request,response);
+                break;
+            case "delete":
+                deleteProduct(request,response);
+                break;
+            case "search":
+                searchProduct(request,response);
+                break;
+            default:
+        }
+    }
+
     private void showViewProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
@@ -116,32 +140,9 @@ public class ProductServlet extends HttpServlet {
     }
 
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action == null){
-            action = "";
-        }
-
-        switch (action) {
-            case "add":
-                addProduct(request,response);
-                break;
-            case "update":
-                updateProduct(request,response);
-                break;
-            case "delete":
-                deleteProduct(request,response);
-                break;
-            case "search":
-                searchProduct(request,response);
-                break;
-            default:
-        }
-    }
 
     private void searchProduct(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/product/search.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/product/list.jsp");
         String name = request.getParameter("name");
         List<Product>productList = productService.searchByName(name);
         if (productList.isEmpty()){
@@ -177,7 +178,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void addProduct(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = (int) (Math.random()*10000);
         String name = request.getParameter("name");
         double price = Double.parseDouble(request.getParameter("price"));
         String description = request.getParameter("description");

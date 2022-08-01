@@ -77,18 +77,18 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public boolean delete(int id) {
-        Connection connection = BaseRepository.getConnectDB();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(DELETE);
-            preparedStatement.setInt(1,id);
-            int check = preparedStatement.executeUpdate();
-            return (check == 1);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        public boolean delete(int id) {
+            Connection connection = BaseRepository.getConnectDB();
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(DELETE);
+                preparedStatement.setInt(1,id);
+                int check = preparedStatement.executeUpdate();
+                return (check == 1);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return false;
         }
-        return false;
-    }
 
     @Override
     public User findById(int id) {

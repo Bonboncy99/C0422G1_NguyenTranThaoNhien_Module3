@@ -15,9 +15,9 @@
 
 </head>
 <body>
-<h1>Create user</h1>
+<h1 class="bg-success text-center text-white">Create user</h1>
 <c:if test="${message != null}">
-    <p>${message}</p>
+    <p class="bg-primary m-2 text-white text-center">${message}</p>
 </c:if>
 
 <a href="/User" class="btn btn-outline-primary">Return User List</a>
@@ -26,7 +26,7 @@
         <label for="name" class="form-label">Name:</label>
         <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
     </div>
-    div class="mb-3 mt-3">
+    <div class="mb-3 mt-3">
     <label for="email" class="form-label">Email:</label>
     <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
     </div>
@@ -35,7 +35,7 @@
         <input type="text" class="form-control" id="country" placeholder="Enter country" name="country">
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">ADD</button>
 </form>
 <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>

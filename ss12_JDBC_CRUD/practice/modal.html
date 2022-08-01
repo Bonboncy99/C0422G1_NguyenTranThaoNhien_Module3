@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css">
+
+
 </head>
 <body>
-$END$
+<button type="" class="btn btn-outline-info" data-bs-toggle = "modal" data-bs-target="#myModal">Open Modal</button>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My modal</h2>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#bon">Open Bon Modal</button>;
+
+<div class="modal" id="bon">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4>My modal</h4>
+            <button type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+            <div class="modal-body">
+                <button type="button" class="btn-danger btn" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../bootstrap-5.0.2-dist/js/bootstrap.js"></script>
 </body>
 </html>

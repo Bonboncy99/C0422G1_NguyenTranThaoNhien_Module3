@@ -64,7 +64,14 @@ public class UserServlet extends HttpServlet {
         List<User>userListSort=userService.sortByName();
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/user/list.jsp");
         request.setAttribute("userListSort",userListSort);
-        
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
     private void searchUser(HttpServletRequest request, HttpServletResponse response) {
         String country = request.getParameter("country");

@@ -14,7 +14,7 @@ public class ProductRepository implements IProductRepository {
         productMap.put(3,new Product(3,"Sua", 20, "ccccc","NB"));
         productMap.put(4,new Product(4,"Thit", 50, "dddddd","HQ"));
         productMap.put(5,new Product(5,"Ca", 40, "eeeee","VN"));
-        productMap.put(6,new Product(1,"Banh", 10, "bbb","VN"));
+        productMap.put(6,new Product(6,"Banh", 10, "bbb","VN"));
 
     }
     @Override

@@ -28,11 +28,11 @@ public class ProductServlet extends HttpServlet {
                 showUpdateProduct(request,response);
                 break;
             case "delete":
-                showDeleteProduct(request,response);
+                deleteProduct(request, response);
                 break;
-            case "view":
-                showViewProduct(request,response);
-                break;
+//            case "view":
+//                showViewProduct(request,response);
+//                break;
             default:
                 showListProduce(request,response);
         }
@@ -52,9 +52,7 @@ public class ProductServlet extends HttpServlet {
             case "update":
                 updateProduct(request,response);
                 break;
-            case "delete":
-                deleteProduct(request,response);
-                break;
+
             case "search":
                 searchProduct(request,response);
                 break;
@@ -62,20 +60,20 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void showViewProduct(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        Product product = productService.findById(id);
-        request.setAttribute("product",product);
-        RequestDispatcher requestDispatcher =request.getRequestDispatcher("view/product/view.jsp") ;
-        try {
-            requestDispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
+//    private void showViewProduct(HttpServletRequest request, HttpServletResponse response) {
+//        int id = Integer.parseInt(request.getParameter("id"));
+//        Product product = productService.findById(id);
+//        request.setAttribute("product",product);
+//        RequestDispatcher requestDispatcher =request.getRequestDispatcher("view/product/view.jsp") ;
+//        try {
+//            requestDispatcher.forward(request,response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
     private void showDeleteProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -162,7 +160,11 @@ public class ProductServlet extends HttpServlet {
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         productService.delete(id);
-        showListProduce(request,response);
+        try {
+            response.sendRedirect("/product");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) {

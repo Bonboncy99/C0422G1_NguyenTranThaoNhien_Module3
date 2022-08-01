@@ -19,39 +19,84 @@
 <form action="/product?action=search" method="post">
     <input type="text" placeholder="Tìm kiếm sản phẩm theo tên" name="name">
     <%--    modal button--%>
-    <button type="submit" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal">
+    <button type="submit" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#searchModal">
         Tìm kiếm
     </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Search Customer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <c:if test="productList != null">
+                            <table class="table table-dark table-hover">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Producer</th>
+                                </tr>
+                                <c:forEach var="product" items="${productList}">
+                                    <tr>
+                                        <td>${product.id}</td>
+                                        <td>${product.name}</td>
+                                        <td>${product.price}</td>
+                                        <td>${product.description}</td>
+                                        <td>${product.producer}</td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </c:if>
+                        <c:if test="message != null">
+                            <p>${message}</p>
+                        </c:if>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quay trở lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
 
-<c:if test="productList != null">
-    <table border="1">
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Producer</th>
-        </tr>
-        <c:forEach var="product" items="${productList}">
+<div>
+    <c:if test="productList != null">
+        <div>
+
+        </div>
+        <table border="1">
             <tr>
-                <td>${product.id}</td>
-                <td>${product.name}</td>
-                <td>${product.price}</td>
-                <td>${product.description}</td>
-                <td>${product.producer}</td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Producer</th>
             </tr>
-        </c:forEach>
+            <c:forEach var="product" items="${productList}">
+                <tr>
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td>${product.description}</td>
+                    <td>${product.producer}</td>
+                </tr>
+            </c:forEach>
+        </table>
         <a href="/product">Quay lại danh sách sản phẩm</a>
-    </table>
-</c:if>
+    </c:if>
+    <c:if test="productList == null">
+        <p>${message}</p>
+        <a href="/product">Quay lại danh sách sản phẩm</a>
+    </c:if>
 
-<c:if test="productList == null">
-    <p>${message}</p>
-</c:if>
-
-
-
+</div>
 
 <table class="table table-striped table-hover">
     <tr>
@@ -65,16 +110,155 @@
     <c:forEach var="product" items="${productList}">
         <tr>
             <td>${product.id}</td>
-            <td><a href="/product?action=view&id=${product.id}">${product.name}</a></td>
+            <td>
+                <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailProduct${product.id}">
+                        ${product.name}
+                </button>
+                <div class="modal" id="detailProduct${product.id}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Chi tiết sản phẩm</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <form action="/products?action=delete&id=${product.id}" method="post">
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <table  class="table table-dark table-hover">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Description</th>
+                                            <th>Producer</th>
+                                        </tr>
+                                        <tr>
+                                            <td>${product.id}</td>
+                                            <td>${product.name}</td>
+                                            <td>${product.price}</td>
+                                            <td>${product.description}</td>
+                                            <td>${product.producer}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </td>
             <td>${product.price}</td>
             <td>${product.description}</td>
             <td>${product.producer}</td>
             <td><a href="/product?action=update&id=${product.id}">Update</a></td>
-            <td><a href="/product?action=delete&id=${product.id}">Delete</a></td>
+            <td>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${product.id}">
+                    Delete
+                </button>
+                <!-- The Modal -->
+                <div class="modal" id="deleteModal${product.id}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delet Product</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <form action="/product&action=delete" method="post">
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <table class="table-hover table table-dark">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Description</th>
+                                            <th>Producer</th>
+                                        </tr>
+                                        <tr>
+                                            <td>${product.id}</td>
+                                            <td>${product.name}</td>
+                                            <td>${product.price}</td>
+                                            <td>${product.description}</td>
+                                            <td>${product.producer}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+
+                                    <a type="button"  class="btn btn-outline-danger" href="/product?action=delete&id=${product.id}" methods="post">
+                                        delte</a>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </td>
         </tr>
     </c:forEach>
 </table>
 
 
+<%--<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal1">--%>
+<%--    Xóa sản phẩm--%>
+<%--</button>--%>
+
+<%--&lt;%&ndash;Modal delete&ndash;%&gt;--%>
+<%--<div class="modal fade" id="deleteModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
+<%--    <div class="modal-dialog">--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--                <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>--%>
+<%--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
+<%--            </div>--%>
+
+<%--            <form action="">--%>
+<%--                <div class="modal-body">--%>
+<%--                    <form method="post">--%>
+<%--                        <div class="row g-2 align-items-center">--%>
+<%--                            <div class="col-auto">--%>
+<%--                                <label for="idDelete" class="col-form-label">Nhập id sản phẩm cần xóa</label>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-auto">--%>
+<%--                                <input type="text" id="idDelete" class="form-control" aria-describedby="Nhập id">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--%>
+<%--                        <a class="btn btn-danger" href="/product?action=delete">Xóa sản phẩm</a>--%>
+<%--                    </form>--%>
+<%--                </div>--%>
+<%--            </form>--%>
+<%--            <div class="modal-body">--%>
+<%--                <form method="post">--%>
+<%--                    <div class="row g-2 align-items-center">--%>
+<%--                        <div class="col-auto">--%>
+<%--                            <label for="idDelete" class="col-form-label">Nhập id sản phẩm cần xóa</label>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-auto">--%>
+<%--                            <input type="text" id="idDelete" class="form-control" aria-describedby="Nhập id">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--%>
+<%--                        <a class="btn btn-danger" href="/product?action=delete">Xóa sản phẩm</a>--%>
+<%--                </form>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+
+<script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html>

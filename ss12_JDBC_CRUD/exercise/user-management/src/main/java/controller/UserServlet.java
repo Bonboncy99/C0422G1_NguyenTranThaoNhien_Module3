@@ -61,9 +61,9 @@ public class UserServlet extends HttpServlet {
     }
 
     private void sortUser(HttpServletRequest request, HttpServletResponse response) {
-        List<User>userListSort=userService.sortByName();
+        List<User>userList=userService.sortByName();
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/user/list.jsp");
-        request.setAttribute("userListSort",userListSort);
+        request.setAttribute("userList",userList);
         try {
             requestDispatcher.forward(request,response);
         } catch (ServletException e) {
@@ -75,12 +75,12 @@ public class UserServlet extends HttpServlet {
     }
     private void searchUser(HttpServletRequest request, HttpServletResponse response) {
         String country = request.getParameter("country");
-        List<User>userListSearch=userService.seachByCountry(country);
+        List<User>userList=userService.seachByCountry(country);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/user/list.jsp");
-        if (userListSearch.isEmpty()){
+        if (userList.isEmpty()){
             request.setAttribute("message","Not found");
         } else {
-            request.setAttribute("userListSearch",userListSearch);
+            request.setAttribute("userList",userList);
         }
         try {
             requestDispatcher.forward(request,response);

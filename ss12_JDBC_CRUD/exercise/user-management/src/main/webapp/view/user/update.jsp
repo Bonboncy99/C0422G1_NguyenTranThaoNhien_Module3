@@ -24,6 +24,10 @@
 <c:if test="${user != null}">
     <form method="post">
         <div class="mb-3 mt-3">
+            <label for="id" class="form-label">Name:</label>
+            <input disabled type="text" class="form-control" id="id"  name="id" value="${user.id}">
+        </div>
+        <div class="mb-3 mt-3">
             <label for="name" class="form-label">Name:</label>
             <input type="text" class="form-control" id="name"  name="name" value="${user.name}">
         </div>

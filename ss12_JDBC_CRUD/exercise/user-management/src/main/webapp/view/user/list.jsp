@@ -62,10 +62,10 @@
             <td>${user.country}</td>
             <th><a class="btn btn-outline-warning" href="/User?action=update&id=${user.id}">Update</a></th>
             <th>
-                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${user.id}">
                     DELETE
                 </button>
-                <div class="modal" id="deleteModal">
+                <div class="modal" id="deleteModal${user.id}">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">

@@ -14,6 +14,7 @@ public interface IUserService {
     List<User>sortByName();
     User getUserById(int id);
     void insertUserStore(User user);
-    void  addUserTransaction(User user,int[] permision);
+    void  addUserTransaction(User user,int[] permision);//thực hành ss13
+    String  addUserTransaction1();//Bài tập ss13
     void insertUpdateWithoutTransaction();
 }

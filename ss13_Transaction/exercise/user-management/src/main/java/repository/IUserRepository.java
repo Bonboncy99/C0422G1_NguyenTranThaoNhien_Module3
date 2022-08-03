@@ -16,4 +16,6 @@ public interface IUserRepository {
     void insertUserStore(User user);
     void addUserTransaction(User user, int[] permision);
     void insertUpdateWithoutTransaction();
+
+    String addUserTransaction1();
 }

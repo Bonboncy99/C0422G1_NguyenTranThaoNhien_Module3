@@ -2,9 +2,13 @@ package Service.impl;
 
 import Service.IUserService;
 import model.User;
+import repository.BaseRepository;
 import repository.IUserRepository;
 import repository.impl.UserRepository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserService implements IUserService {
@@ -57,6 +61,12 @@ public class UserService implements IUserService {
     @Override
     public void addUserTransaction(User user, int[] permision) {
         userRepository.addUserTransaction(user,permision);
+    }
+
+    @Override
+    public String addUserTransaction1() {
+         return userRepository.addUserTransaction1();
+
     }
 
     @Override

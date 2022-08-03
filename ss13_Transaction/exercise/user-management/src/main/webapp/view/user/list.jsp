@@ -32,6 +32,8 @@
     </c:if>
 
 </div>
+
+<a href="/User?action=test-with-tran1">Test Transaction</a>
 <table class="table table-hover table-striped table-light">
     <thead>
     <tr>

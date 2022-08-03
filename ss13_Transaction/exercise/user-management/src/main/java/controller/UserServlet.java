@@ -37,10 +37,17 @@ public class UserServlet extends HttpServlet {
                 break;
             case "test-without-tran":
                 textWithoutTran(request,response);
+            case "test-with-tran1"://bai tap ss13
+                testWithTran(request,response);
             default:
                 showListUser(request, response);
         }
     }
+
+    private void testWithTran(HttpServletRequest request, HttpServletResponse response) {
+        userService.addUserTransaction1();
+    }
+
 
 
 

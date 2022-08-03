@@ -12,5 +12,9 @@ public interface IUserRepository {
     User findById(int id);
     List<User> searchByCountry(String country);
     List<User>sortByName();
-
+    User getUserById(int id);
+    void insertUserStore(User user);
+    void addUserTransaction(User user, int[] permision);
+    void insertUpdateWithoutTransaction();
+    public void insertUpdateUseTransaction();
 }

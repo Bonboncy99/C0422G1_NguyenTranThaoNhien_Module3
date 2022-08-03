@@ -1,7 +1,7 @@
 package controller;
 
-import Service.IUserService;
-import Service.impl.UserService;
+import service.IUserService;
+import service.impl.UserService;
 import model.User;
 
 import javax.servlet.*;
@@ -32,10 +32,23 @@ public class UserServlet extends HttpServlet {
             case "sort":
                 sortUser(request,response);
                 break;
+            case "permision":
+                addUserPermision(request,response);
+                break;
+            case "test-without-tran":
+                textWithoutTran(request,response);
+            case "test-use-tran":
+                testUseTran(request, response);
+                break;
             default:
                 showListUser(request, response);
         }
     }
+
+    private void testUseTran(HttpServletRequest request, HttpServletResponse response) {
+        userService.insertUpdateUseTransaction();
+    }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,6 +71,17 @@ public class UserServlet extends HttpServlet {
             default:
                 showListUser(request, response);
         }
+    }
+
+    private void textWithoutTran(HttpServletRequest request, HttpServletResponse response) {
+        userService.insertUpdateWithoutTransaction();
+    }
+
+    private void addUserPermision(HttpServletRequest request, HttpServletResponse response) {
+        User user = new User("quan", "quan.nguyen@codegym.vn", "vn");
+        int[] permision = {1,2,4};
+        userService.addUserTransaction(user,permision);
+        showListUser(request,response);
     }
 
     private void sortUser(HttpServletRequest request, HttpServletResponse response) {
@@ -95,6 +119,7 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/user/update.jsp");
         int id = Integer.parseInt(request.getParameter("id"));
         User user = userService.findById(id);
+//        User user = userService.getUserById(id);
         if (user == null){
             request.setAttribute("message","Not Found");
         } else {

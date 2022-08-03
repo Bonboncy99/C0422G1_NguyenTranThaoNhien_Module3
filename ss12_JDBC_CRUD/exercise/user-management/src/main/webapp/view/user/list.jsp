@@ -22,10 +22,6 @@
             <input type="text" placeholder="Enter country" name="country">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        <form action="/User" method="get">
-            <input type="text" placeholder="Enter id" name="id">
-            <button class="btn btn-outline-warning" type="submit" name="action" value="update">UPDATE</button>
-        </form>
     </div>
     <div>
         <a class="btn btn-outline-info" href="/User?action=add">Add user</a>

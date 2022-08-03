@@ -435,20 +435,18 @@ public class UserRepository implements IUserRepository {
 
         try {
             connection.setAutoCommit(false);
-
-//            hd1: Insert into table Employee
-            PreparedStatement psInsertEmployee = connection.prepareStatement("insert into employee (id,name,email,country) value(?,?,?,?)");
-            psInsertEmployee.setInt(1,1);
-            psInsertEmployee.setString(2,"Bon");
-            psInsertEmployee.setString(3,"thaonhien9991@gmail.com");
-            psInsertEmployee.setString(4,"Quang Tri");
-            int rowAffect = psInsertEmployee.executeUpdate();
-
-//            hd2: Insert into table level
+//            hd1: Insert into table level
             PreparedStatement psInsertLevel = connection.prepareStatement("insert into level (id,name) value (?,?)");
-            psInsertLevel.setInt(1,1);
+            psInsertLevel.setInt(1,2);
             psInsertLevel.setString(2,"Master");
-            rowAffect += psInsertLevel.executeUpdate();
+            int rowAffect = psInsertLevel.executeUpdate();
+//            hd2: Insert into table Employee
+            PreparedStatement psInsertEmployee = connection.prepareStatement("insert into employee1 (id,name,email,country) value(?,?,?,?)");
+            psInsertEmployee.setInt(1,5);
+            psInsertEmployee.setString(2,"Bon");
+            psInsertEmployee.setString(3,"bubu");
+            psInsertEmployee.setString(4,"Quang Tri");
+            rowAffect += psInsertEmployee.executeUpdate();
             if (rowAffect==2){
                 connection.commit();
             } else {

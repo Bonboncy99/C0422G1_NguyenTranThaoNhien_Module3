@@ -8,47 +8,57 @@ import java.io.IOException;
 @WebServlet(name = "FuramaServlet", value = "/Furama")
 public class FuramaServlet extends HttpServlet {
     @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action == null){
+        if (action == null) {
             action = "";
         }
         switch (action) {
             case "employee":
-//                goToEmployeePage(request,response);
+                goToEmployeePage(request, response);
                 break;
             case "customer":
-//                goToCustomerPage(request,response);
+                goToCustomerPage(request, response);
                 break;
             case "service":
-                goToServicePage(request,response);
+                goToServicePage(request, response);
                 break;
             case "contract":
-//                goToContractPage(request,response);
+                goToContractPage(request, response);
                 break;
             default:
-                goToHomePage(request,response);
+                goToHomePage(request, response);
         }
+    }
+
+    private void goToCustomerPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/customer/list.jsp");
+        requestDispatcher.forward(request,response);
+    }
+
+    private void goToContractPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("view/contract/list.jsp");
+        requestDispatcher.forward(request,response);
+    }
+
+    private void goToEmployeePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/employee/list.jsp");
+        requestDispatcher.forward(request,response);
     }
 
     private void goToHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
     }
 
-    private void goToServicePage(HttpServletRequest request, HttpServletResponse response) {
+    private void goToServicePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/list.jsp");
-        try {
-            requestDispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        requestDispatcher.forward(request, response);
 
     }
+
 }

@@ -57,12 +57,12 @@
         </div>
     </nav>
 </div>
-<h1 class="bg-info text-center text-white p-3" style="margin-top: 150px">Danh sách dịch vụ</h1>
+<h1 class="bg-success text-center text-white p-3" style="margin-top: 150px">Danh sách dịch vụ</h1>
 
 <%--<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">--%>
 <%--    Thêm mới dịch vụ--%>
 <%--</button>--%>
-<a class="btn btn-success" href="/Service?action=?">Thêm mới dịch vụ</a>
+<a class="btn btn-success" href="/Service?action=addService">Thêm mới dịch vụ</a>
 <table class="table table-bordered table-hover table-light table-striped table-responsive">
     <thead class="table-success text-center">
     <tr>
@@ -83,14 +83,12 @@
         <td>10</td>
         <td>theo ngày</td>
         <td>
-            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
-                View
-            </button>
+<%--            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">--%>
+<%--                View--%>
+<%--            </button>--%>
         </td>
         <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
+            <a class="btn btn-outline-warning" href="/Service?action=updateService">Update</a>
         </td>
         <td>
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -106,14 +104,12 @@
         <td>7</td>
         <td>theo ngày</td>
         <td>
-            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
-                View
-            </button>
+<%--            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">--%>
+<%--                View--%>
+<%--            </button>--%>
         </td>
         <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
+            <a class="btn btn-outline-warning" href="/Service?action=updateService">Update</a>
         </td>
         <td>
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -129,14 +125,12 @@
         <td>2</td>
         <td>theo ngày</td>
         <td>
-            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
-                View
-            </button>
+<%--            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">--%>
+<%--                View--%>
+<%--            </button>--%>
         </td>
         <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
+            <a class="btn btn-outline-warning" href="/Service?action=updateService">Update</a>
         </td>
         <td>
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -152,14 +146,12 @@
         <td>8</td>
         <td>theo ngày</td>
         <td>
-            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
-                View
-            </button>
+<%--            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">--%>
+<%--                View--%>
+<%--            </button>--%>
         </td>
         <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
+            <a class="btn btn-outline-warning" href="/Service?action=updateService">Update</a>
         </td>
         <td>
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -175,14 +167,12 @@
         <td>5</td>
         <td>theo ngày</td>
         <td>
-            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
-                View
-            </button>
+<%--            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">--%>
+<%--                View--%>
+<%--            </button>--%>
         </td>
         <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
+            <a class="btn btn-outline-warning" href="/Service?action=updateService">Update</a>
         </td>
         <td>
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -198,14 +188,12 @@
         <td>2</td>
         <td>theo ngày</td>
         <td>
-            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
-                View
-            </button>
+<%--            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">--%>
+<%--                View--%>
+<%--            </button>--%>
         </td>
         <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
+            <a class="btn btn-outline-warning" href="/Service?action=updateService">Update</a>
         </td>
         <td>
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">

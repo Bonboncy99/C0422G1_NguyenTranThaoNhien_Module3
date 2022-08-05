@@ -9,21 +9,21 @@ import java.io.IOException;
 public class ServiceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action==null){
-            action = "";
+            String action = request.getParameter("action");
+            if (action==null){
+                action = "";
+            }
+            switch (action){
+                case "addService":
+                    showAddService(request,response);
+                    break;
+                case "updateService":
+                    showUpdateService(request,response);
+                    break;
+                default:
+                    showListService(request,response);
+            }
         }
-        switch (action){
-            case "addService":
-                showAddService(request,response);
-                break;
-            case "updateService":
-                showUpdateService(request,response);
-                break;
-            default:
-                showListService(request,response);
-        }
-    }
 
     private void showUpdateService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/update.jsp");
@@ -36,7 +36,7 @@ public class ServiceServlet extends HttpServlet {
     }
 
     private void showListService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/add.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/list.jsp");
         requestDispatcher.forward(request,response);
     }
 

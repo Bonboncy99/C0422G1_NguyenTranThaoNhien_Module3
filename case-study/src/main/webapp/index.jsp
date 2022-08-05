@@ -24,11 +24,11 @@
           </div>
 
           <li class="nav-item">
-            <a class="nav-link  fw-bold" href="#">Employee</a>
+            <a class="nav-link  fw-bold" href="/Furama?action=employee">Employee</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link  fw-bold" href="#" tabindex="-1" aria-disabled="true">Customer</a>
+            <a class="nav-link  fw-bold" href="/Furama?action=customer" tabindex="-1" aria-disabled="true">Customer</a>
           </li>
 
           <li class="nav-item">
@@ -36,7 +36,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link  fw-bold" href="#" tabindex="-1" aria-disabled="true">Contract</a>
+            <a class="nav-link  fw-bold" href="/Furama?action=contract" tabindex="-1" aria-disabled="true">Contract</a>
           </li>
         </ul>
         <form class="d-flex ">

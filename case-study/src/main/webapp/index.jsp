@@ -1,30 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Asus
-  Date: 8/5/2022
-  Time: 1:47 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Title</title>
   <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+
 </head>
-<body>
-<!--header-->
-<header class="container">
-  <div class="row mt-3 bg-light d-flex justify-content-center align-content-center">
-    <div class="col-md-2">
-      <img class="img-fluid" src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" alt="Furama"
-           width="50" height="50">
-    </div>
-    <div class="col-md-8"></div>
-    <div class="col-md-2"><a href="#">Nguyễn Trần Thảo Nhiên</a></div>
-  </div>
-</header>
+<body class="bg-dark">
 <!--navbar-->
-<div class="sticky-top container-fluid">
+<div class="fixed-top container-fluid">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -33,9 +16,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class=" navbar-nav me-auto mb-2 mb-lg-0">
           <div class="container" style="width: 60px;height: 60px">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/Furama">
               <img class="img-fluid" src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" alt="">
             </a>
           </div>
@@ -49,25 +32,29 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link  fw-bold" href="#" tabindex="-1" aria-disabled="true">Service</a>
+            <a class="nav-link  fw-bold" href="/Furama?action=service" tabindex="-1" aria-disabled="true">Service</a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link  fw-bold" href="#" tabindex="-1" aria-disabled="true">Contract</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex ">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+        <div>
+          <a href="">Nguyễn Trần Thảo Nhiên</a>
+        </div>
       </div>
     </div>
   </nav>
 </div>
 
+
 <!--Slider-->
-<div class="container">
-  <div class="row d-flex justify-content-center align-content-center">
+<div class="container d-flex justify-content-center">
+  <div class="row">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
@@ -107,7 +94,7 @@
   <div class="row mt-5">
     <div class="col-md-4">
       <p class="fs-4 text-uppercase text-info text-center">THIS WORLD CLASS RESORT, FURAMA DANANG, REPUTABLE FOR
-        BEING A CULINARY RESORT IN VIETNAM
+        BEING A CULINARY RESORT IN VIET NAM
       </p>
     </div>
     <div class="col-md-4">
@@ -117,7 +104,7 @@
               allowfullscreen></iframe>
     </div>
     <div class="col-md-4">
-      <p>Overlooking the long stretch of wide white sand on Danang Beach, Furama Resort Danang is a gateway to
+      <p class="text-white">Overlooking the long stretch of wide white sand on Danang Beach, Furama Resort Danang is a gateway to
         three World Heritage Sites of Hoi An (20 minutes), My Son (90 minutes) and Hue (2 hours). The 198 rooms
         and suites plus 70 two to four bedroom pool villas feature tasteful décor, designed with traditional
         Vietnamese style and a touch of French colonial architecture and guarantee the Vietnam’s the most
@@ -132,13 +119,13 @@
              class="img-fluid rounded-start" alt="img1">
       </div>
       <div class="col-md-6">
-        <div class="p-5 m-2">
+        <div class="p-5">
           <div class="card-body">
             <h5 class="card-title text-center text-info">RECREATION</h5>
             <p class="card-text">
               A full range of Water Sports will keep you busy. Stop by the Water Sport House where our
               experienced staff are waiting to assist or train you in the use of any of our equipment.</p>
-            <a href="#" class="btn bg-success">Read more</a>
+            <a href="#" class="btn bg-success text-white">Read more</a>
           </div>
         </div>
       </div>
@@ -148,7 +135,7 @@
     <div class="row g-0">
       <div class="col-md-6">
         <div class="card-body">
-          <div class="p-5 m-2">
+          <div class="p-5">
             <h5 class="card-title text-center text-info">CULINARY</h5>
             <p class="card-text">The resort’s culinary experience features a mixture of the authentic and
               locally inspired Vietnamese, Asian, Italian and other European cuisines plus the best imported
@@ -156,7 +143,7 @@
               overlooking the beach, the exclusive Lagoon pool surrounded by a tropical garden, the true
               Italian flare offered at the Don Cipriani’s, the refined Asian touch at Café Indochine or the
               authentic central Vietnam cuisine at the Danaksara.</p>
-            <a href="#" class="btn bg-success">Read more</a>
+            <a href="#" class="btn bg-success text-white">Read more</a>
           </div>
         </div>
       </div>
@@ -174,7 +161,7 @@
       </div>
       <div class="col-md-6">
         <div class="card-body">
-          <div class="p-5 m-2">
+          <div>
             <h5 class="card-title text-center text-info">MEETING & EVENT</h5>
             <p class="card-text">
               A well-appointed International Convention Palace with ballrooms can accommodate up to 1,000
@@ -182,7 +169,7 @@
               cultural-themed parties on the beach or around the lagoon, in the ballrooms or outside the
               resort, with the surprising arrivals of VIPs from Helicopter landing on the resort’s own
               Helipad…</p>
-            <a href="#" class="btn bg-success">Read more</a>
+            <a href="#" class="btn bg-success text-white">Read more</a>
           </div>
         </div>
       </div>
@@ -304,6 +291,7 @@
 
 
 </footer>
+<!-- Footer -->
 <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html>

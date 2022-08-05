@@ -6,27 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
-
 </head>
 <body>
-<!--header-->
-<header class="container">
-    <div class="row mt-3 bg-light d-flex justify-content-center align-content-center">
-        <div class="col-md-2">
-            <img class="img-fluid" src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" alt="Furama"
-                 width="50" height="50">
-        </div>
-        <div class="col-md-8"></div>
-        <div class="col-md-2"><a href="#">Nguyễn Trần Thảo Nhiên</a></div>
-    </div>
-</header>
-<!--navbar-->
-<div class="sticky-top container-fluid">
+<div class="fixed-top container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -35,10 +22,11 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class=" navbar-nav me-auto mb-2 mb-lg-0">
                     <div class="container" style="width: 60px;height: 60px">
-                        <a class="navbar-brand" href="#">
-                            <img class="img-fluid" src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" alt="">
+                        <a class="navbar-brand" href="/Furama">
+                            <img class="img-fluid"
+                                 src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" alt="">
                         </a>
                     </div>
 
@@ -51,263 +39,452 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link  fw-bold" href="#" tabindex="-1" aria-disabled="true">Service</a>
+                        <a class="nav-link  fw-bold" href="/Furama?action=service" tabindex="-1" aria-disabled="true">Service</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link  fw-bold" href="#" tabindex="-1" aria-disabled="true">Contract</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex ">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+                <div>
+                    <a href="">Nguyễn Trần Thảo Nhiên</a>
+                </div>
             </div>
         </div>
     </nav>
 </div>
+<h1 class="bg-info text-center text-white p-3" style="margin-top: 150px">Danh sách dịch vụ</h1>
 
-<!--Slider-->
-<div class="container">
-    <div class="row">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active w-75 h-75" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="w-75 h-75"
-                        aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="w-75 h-75"
-                        aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="slider/img1.jpg" height="750" width="1200" class="d-block img-fluid" alt="img1"/>
-                </div>
-                <div class="carousel-item">
-                    <img src="slider/img2.jpg" height="750" width="1200" class="d-block img-fluid" alt="img2"/>
-                </div>
-                <div class="carousel-item">
-                    <img src="slider/img3.jpg" height="750" width="1200" class="d-block img-fluid" alt="img3"/>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+<%--<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">--%>
+<%--    Thêm mới dịch vụ--%>
+<%--</button>--%>
+<a class="btn btn-success" href="/Service?action=?">Thêm mới dịch vụ</a>
+<table class="table table-bordered table-hover table-light table-striped table-responsive">
+    <thead class="table-success text-center">
+    <tr>
+        <th>#</th>
+        <th>Tên dịch vụ</th>
+        <th>Diện tích</th>
+        <th>Chi phí thuê</th>
+        <th>Số người tối đa</th>
+        <th>Kiểu thuê</th>
+        <th colspan="3">Các chức năng</th>
+    </tr>
+    </thead>
+    <tr>
+        <td>1</td>
+        <td>Villa Beach Front</td>
+        <td>25000</td>
+        <td>1000000</td>
+        <td>10</td>
+        <td>theo ngày</td>
+        <td>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
+                View
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
+                Update
             </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Delete
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>House Princess 01</td>
+        <td>14000</td>
+        <td>5000000</td>
+        <td>7</td>
+        <td>theo ngày</td>
+        <td>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
+                View
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
+                Update
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Delete
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Room Twin 01</td>
+        <td>5000</td>
+        <td>1000000</td>
+        <td>2</td>
+        <td>theo ngày</td>
+        <td>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
+                View
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
+                Update
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Delete
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Villa No Beach Front</td>
+        <td>22000</td>
+        <td>9000000</td>
+        <td>8</td>
+        <td>theo ngày</td>
+        <td>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
+                View
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
+                Update
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Delete
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>House Princess 02</td>
+        <td>10000</td>
+        <td>4000000</td>
+        <td>5</td>
+        <td>theo ngày</td>
+        <td>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
+                View
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
+                Update
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Delete
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Room Twin 02</td>
+        <td>3000</td>
+        <td>9000000</td>
+        <td>2</td>
+        <td>theo ngày</td>
+        <td>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewModal">
+                View
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
+                Update
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Delete
+            </button>
+        </td>
+    </tr>
+</table>
+
+<!--The Add modal ok-->
+<div class="modal" id="addModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h4 class="modal-title ">Thêm mới dịch vụ</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <select class="form-select-lg w-50 m-auto mt-3 border-success rounded-pill" name="" id="addSelect"
+                    onchange="displayInputAdd()">
+                <option value="none">Chọn loại dịch vụ</option>
+                <option value="house">Thêm mới House</option>
+                <option value="villa">Thêm mới Villa</option>
+                <option value="room">Thêm mới Room</option>
+            </select>
+
+            <form action="">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="tenDv" aria-describedby="emailHelp"
+                               placeholder="1. Nhập Tên dịch vụ">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="dienTich" aria-describedby="emailHelp"
+                               placeholder="2. Nhập Diện tích">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="chiPhiThue" aria-describedby="emailHelp"
+                               placeholder="3. Nhập chi phí thuê">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="soNguoiToiDa" aria-describedby="emailHelp"
+                               placeholder="4. Nhập số người tối đa">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="tieuChuanPhong" aria-describedby="emailHelp"
+                               placeholder="5. Nhập Tiêu chuẩn phòng">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="tienNghiKhac" aria-describedby="emailHelp"
+                               placeholder="6. Nhập Mô tả tiện nghi khác">
+                    </div>
+                    <div class="mb-3 dienTichHoBoi" style="display: none" id="dienTichHoBoi">
+                        <input type="text" class="form-control" aria-describedby="emailHelp"
+                               placeholder="Nhập Diện tích hồ bơi">
+                    </div>
+                    <div class="mb-3 soTang" style="display: none" id="soTang">
+                        <input type="text" class="form-control" aria-describedby="emailHelp"
+                               placeholder="Nhập Số tầng">
+                    </div>
+                    <div class="mb-3 dichVuMienPhi" style="display: none" id="dichVuMienPhi">
+                        <input type="text" class="form-control" aria-describedby="emailHelp"
+                               placeholder="Nhập dịch vụ miễn phí đi kèm">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" id="add" class="btn btn-outline-success">Thêm mới</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<!--Content-->
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-md-4">
-            <p class="fs-4 text-uppercase text-info text-center">THIS WORLD CLASS RESORT, FURAMA DANANG, REPUTABLE FOR
-                BEING A CULINARY RESORT IN
-                <VIETNAM></VIETNAM>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <iframe width="90%" height="90%" src="https://www.youtube.com/embed/IjlT_4mvd-c"
-                    title="The Furama Resort DaNang - Couples Corporate" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-        </div>
-        <div class="col-md-4">
-            <p>Overlooking the long stretch of wide white sand on Danang Beach, Furama Resort Danang is a gateway to
-                three World Heritage Sites of Hoi An (20 minutes), My Son (90 minutes) and Hue (2 hours). The 198 rooms
-                and suites plus 70 two to four bedroom pool villas feature tasteful décor, designed with traditional
-                Vietnamese style and a touch of French colonial architecture and guarantee the Vietnam’s the most
-                prestigious resort -counting royalty, presidents, movie stars and international business leaders among
-                its celebrity guests.</p>
-        </div>
-    </div>
-    <div class="card m-3" style="max-width: 90%">
-        <div class="row g-0">
-            <div class="col-md-6">
-                <img src="https://furamavietnam.com/wp-content/uploads/2018/07/CULIRARY.jpg"
-                     class="img-fluid rounded-start" alt="img1">
+<!-- The View Modal -->
+<div class="modal" id="viewModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">VIEW SERVICE</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <div class="col-md-6">
-                <div class="p-5">
-                    <div class="card-body">
-                        <h5 class="card-title text-center text-info">RECREATION</h5>
-                        <p class="card-text">
-                            A full range of Water Sports will keep you busy. Stop by the Water Sport House where our
-                            experienced staff are waiting to assist or train you in the use of any of our equipment.</p>
-                        <a href="#" class="btn bg-success">Read more</a>
-                    </div>
-                </div>
+
+            <div class="modal-body">
+                <table class="table table-bordered table-success table-hover">
+
+                    <tr>
+                        <th>#</th>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th>Tên dịch vụ</th>
+                        <td>Villa Beach Front</td>
+                    </tr>
+                    <tr>
+                        <th>Diện tích</th>
+                        <td>25000</td>
+                    </tr>
+                    <tr>
+                        <th>Chi phí thuê</th>
+                        <td>1000000</td>
+                    </tr>
+                    <tr>
+                        <th>Số người tối đa</th>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th>Tiêu chuẩn phòng</th>
+                        <td>vip</td>
+                    </tr>
+                    <tr>
+                        <th>Mô tả tiện nghi khác</th>
+                        <td>Có hồ bơi</td>
+                    </tr>
+                    <tr>
+                        <th>Diện tích hồ bơi</th>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <th>Số tầng</th>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <th>Dịch vụ miễn phí đi kèm</th>
+                        <td>Không</td>
+                    </tr>
+                </table>
+
+                <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                        data-bs-target="#updateModal">
+                    Update
+                </button>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal">
+                    Delete
+                </button>
             </div>
-        </div>
-    </div>
-    <div class="card m-3" style="max-width: 90%">
-        <div class="row g-0">
-            <div class="col-md-6">
-                <div class="card-body">
-                    <div class="p-5">
-                        <h5 class="card-title text-center text-info">CULINARY</h5>
-                        <p class="card-text">The resort’s culinary experience features a mixture of the authentic and
-                            locally inspired Vietnamese, Asian, Italian and other European cuisines plus the best imported
-                            steaks. The resort presents guests with varied gastronomic venues – the hip and breezy bar
-                            overlooking the beach, the exclusive Lagoon pool surrounded by a tropical garden, the true
-                            Italian flare offered at the Don Cipriani’s, the refined Asian touch at Café Indochine or the
-                            authentic central Vietnam cuisine at the Danaksara.</p>
-                        <a href="#" class="btn bg-success">Read more</a>
-                    </div>
-                </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
             </div>
-            <div class="col-md-6">
-                <img src="https://furamavietnam.com/wp-content/uploads/2018/07/RECREATION.jpg"
-                     class="img-fluid rounded-start" alt="img1">
-            </div>
-        </div>
-    </div>
-    <div class="card m-3" style="max-width: 90%">
-        <div class="row g-0">
-            <div class="col-md-6">
-                <img src="https://furamavietnam.com/wp-content/uploads/2018/10/02.-ICP-ICP_Furama_Danang_-Ball-Room-4.jpg"
-                     class="img-fluid rounded-start" alt="img1">
-            </div>
-            <div class="col-md-6">
-                <div class="card-body">
-                    <div>
-                        <h5 class="card-title text-center text-info">MEETING & EVENT</h5>
-                        <p class="card-text">
-                            A well-appointed International Convention Palace with ballrooms can accommodate up to 1,000
-                            people in style, with another ten function rooms for 50 to 300 people each. A variety of
-                            cultural-themed parties on the beach or around the lagoon, in the ballrooms or outside the
-                            resort, with the surprising arrivals of VIPs from Helicopter landing on the resort’s own
-                            Helipad…</p>
-                        <a href="#" class="btn bg-success">Read more</a>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
 
-<!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted">
-    <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-        <!-- Left -->
+<!-- The Update Modal ok-->
+<div class="modal" id="updateModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-        <!-- Left -->
-
-        <!-- Right -->
-        <div>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-google"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-github"></i>
-            </a>
-        </div>
-        <!-- Right -->
-    </section>
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Company name
-                    </h6>
-                    <p>
-                        Here you can use rows and columns to organize your footer content. Lorem ipsum
-                        dolor sit amet, consectetur adipisicing elit.
-                    </p>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Products
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-reset">Angular</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">React</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Vue</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Laravel</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Useful links
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-reset">Pricing</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Settings</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Orders</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Help</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                    <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                    <p>
-                        <i class="fas fa-envelope me-3"></i>
-                        info@example.com
-                    </p>
-                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-                </div>
-                <!-- Grid column -->
+            <div class="modal-header">
+                <h4 class="modal-title">UPDATE SERVICE</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <!-- Grid row -->
+
+            <form action="">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="tenDvMoi" class="form-label">ID</label>
+                        <input disabled type="text" class="form-control" id="idDichVu" aria-describedby="emailHelp"
+                               value="1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tenDvMoi" class="form-label">Tên dịch vụ</label>
+                        <input type="text" class="form-control" id="tenDvMoi" aria-describedby="emailHelp"
+                               value="Villa Beach Front">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dienTichMoi" class="form-label">Diện tích</label>
+                        <input type="text" class="form-control" id="dienTichMoi" aria-describedby="emailHelp"
+                               value="25000">
+                    </div>
+                    <div class="mb-3">
+                        <label for="chiPhiThueMoi" class="form-label">Chi phí thuê</label>
+                        <input type="text" class="form-control" id="chiPhiThueMoi" aria-describedby="emailHelp"
+                               value="1000000">
+                    </div>
+                    <div class="mb-3">
+                        <label for="soNguoiToiDaMoi" class="form-label">Số người tối đa</label>
+                        <input type="text" class="form-control" id="soNguoiToiDaMoi" aria-describedby="emailHelp"
+                               value="10">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tieuChuanPhongMoi" class="form-label">Tiêu chuẩn phòng</label>
+                        <input type="text" class="form-control" id="tieuChuanPhongMoi" aria-describedby="emailHelp"
+                               value="vip">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tienNghiKhacMoi" class="form-label">Mô tả tiện nghi khác</label>
+                        <input type="text" class="form-control" id="tienNghiKhacMoi" aria-describedby="emailHelp"
+                               value="Có hồ bơi">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-warning">Update</button>
+                </div>
+            </form>
         </div>
-    </section>
-    <!-- Section: Links  -->
+    </div>
+</div>
 
+<!-- The Delete Modal ok-->
+<div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-</footer>
-<!-- Footer -->
+            <div class="modal-header">
+                <h4 class="modal-title">DELETE SERVICE</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <p>Bạn muốn xóa service ......?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        setStatusSummitBtn(false);
+    }
+
+    function setStatusSummitBtn(action) {
+        // false => tắt ~ disable
+        // true => bật ~ enable
+        if (action === false) {
+            document.getElementById("add").disabled = true;
+        } else document.getElementById("add").disabled = false;
+
+    }
+
+    function displayInputAdd() {
+        let value = document.getElementById("addSelect").value;
+        let dienTichHoBoi = document.getElementById("dienTichHoBoi");
+        let soTang = document.getElementById("soTang");
+        let dichVuMienPhi = document.getElementById("dichVuMienPhi");
+        // let addBtn = document.getElementById("add");
+        // console.log(addBtn)
+        switch (value) {
+            case "none":
+                setStatusSummitBtn(false);
+                break;
+            case "house":
+                dienTichHoBoi.style.display = "none"
+                soTang.style.display = "block"
+                dichVuMienPhi.style.display = "none"
+                setStatusSummitBtn(true);
+                console.log(1)
+                break;
+            case "villa":
+                soTang
+                //villa
+                dienTichHoBoi.style.display = "block"
+                soTang.style.display = "block"
+                dichVuMienPhi.style.display = "none"
+                setStatusSummitBtn(true);
+                console.log(2)
+                break;
+            case "room":
+                //room
+                dienTichHoBoi.style.display = "none"
+                soTang.style.display = "none"
+                dichVuMienPhi.style.display = "block"
+                setStatusSummitBtn(true);
+                console.log(3)
+                break;
+        }
+    }
+
+</script>
 <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html>

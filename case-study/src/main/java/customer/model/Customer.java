@@ -6,7 +6,7 @@ public class Customer {
     int maKhachHang;
     int maLoaiKhach;
     String hoTen;
-    LocalDate ngaySinh;
+    String ngaySinh;
     boolean gioiTinh;
     String soCmnd;
     String soDienThoai;
@@ -16,8 +16,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int maKhachHang, int maLoaiKhach, String hoTen, LocalDate ngaySinh, boolean gioiTinh, String soCmnd, String soDienThoai, String email, String diaChi) {
-        this.maKhachHang = maKhachHang;
+    public Customer(int maLoaiKhach, String hoTen, String ngaySinh, boolean gioiTinh, String soCmnd, String soDienThoai, String email, String diaChi) {
         this.maLoaiKhach = maLoaiKhach;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
@@ -28,7 +27,8 @@ public class Customer {
         this.diaChi = diaChi;
     }
 
-    public Customer(int maLoaiKhach, String hoTen, LocalDate ngaySinh, boolean gioiTinh, String soCmnd, String soDienThoai, String email, String diaChi) {
+    public Customer(int maKhachHang, int maLoaiKhach, String hoTen, String ngaySinh, boolean gioiTinh, String soCmnd, String soDienThoai, String email, String diaChi) {
+        this.maKhachHang = maKhachHang;
         this.maLoaiKhach = maLoaiKhach;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
@@ -63,11 +63,11 @@ public class Customer {
         this.hoTen = hoTen;
     }
 
-    public LocalDate getNgaySinh() {
+    public String getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(LocalDate ngaySinh) {
+    public void setNgaySinh(String ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Asus
@@ -13,60 +14,108 @@
 
 </head>
 <body>
+int maLoaiKhach;
+String ;
+String ngaySinh;
+boolean gioiTinh;
+String ;
+String ;
+String ;
+String ;
 <h4 class="p-3 bg-warning text-white text-center">Cập nhật Khách hàng</h4>
 <div class="d-flex justify-content-center">
-    <form action="" method="post" class="text-warning fw-bold bg-light w-75 mt-5 mb-5 shadow-lg p-5">
+    <form action="/Customer?action=updateCustomer" method="post" class="text-warning fw-bold bg-light w-75 mt-5 mb-5 shadow-lg p-5">
         <div class="mb-3 w-50 d-flex justify-content-center">
-            <input disabled type="text" class="form-control" id="idDichVuMoi" value="1">
+            <input readonly type="text" class="form-control" name="maKhachHang" id="idKhachHang" value="${customer.maKhachHang}">
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="mb-3">
                     <label for="hoTenMoi" class="form-label ">1. Nhập họ tên khách hàng mới</label>
-                    <input type="text" class="form-control" id="hoTenMoi" value="2">
+                    <input type="text" class="form-control" id="hoTenMoi" value="${customer.hoTen}" name="hoTenMoi">
                 </div>
                 <div class="mb-3">
                     <label for="ngaySinhMoi" class="form-label ">2. Nhập ngày sinh mới</label>
-                    <input type="text" class="form-control" id="ngaySinhMoi" value="2">
+                    <input type="text" class="form-control" id="ngaySinhMoi" value="${customer.ngaySinh}" name="ngaySinhMoi">
                 </div>
                 <div class="mb-3">
-                    <label for="gioiTinhMoi" class="form-label ">3. Nhập giới tính mới</label>
-                    <input type="text" class="form-control" id="gioiTinhMoi" value="2">
+                    <label for="gioiTinhMoi" class="form-label ">3. Chọn giới tính mới</label>
+                    <select name="gioiTinhMoi" id="gioiTinhMoi">
+                        <c:if test="${customer.gioiTinh == true}">
+                            <option value="true">Nam</option>
+                            <option value="false">Nữ</option>
+                        </c:if>
+                        <c:if test="${customer.gioiTinh == false}">
+                            <option value="false">Nữ</option>
+                            <option value="true">Nam</option>
+                        </c:if>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="soCmndMoi" class="form-label ">4. Nhập số CMND mới</label>
-                    <input type="text" class="form-control" id="soCmndMoi" value="2">
+                    <input type="text" class="form-control" id="soCmndMoi" name="soCmndMoi" value="${customer.soCmnd}">
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="mb-3">
                     <label for="soDienThoaiMoi" class="form-label ">5. Nhập số điện thoại mới</label>
-                    <input type="text" class="form-control" id="soDienThoaiMoi" value="2">
+                    <input type="text" class="form-control" id="soDienThoaiMoi" value="${customer.soDienThoai}" name="soDienThoaiMoi">
                 </div>
                 <div class="mb-3">
                     <label for="emailMoi" class="form-label ">6. Nhập email mới</label>
-                    <input type="text" class="form-control" id="emailMoi" value="2">
+                    <input type="text" class="form-control" id="emailMoi" value="${customer.email}" name="emailMoi">
                 </div>
                 <div class="mb-3">
                     <label for="loaiKhachMoi" class="form-label ">7.Chọn loại khách mới</label>
-                    <select name="kieuThue" id="loaiKhachMoi">
-                        <option value="Diamond">Diamond</option>
-                        <option value="Platinium">Platinium</option>
-                        <option value="Gold">Gold</option>
-                        <option value="Silver">Silver</option>
-                        <option value="Member">Member</option>
+                    <select name="loaiKhachMoi" id="loaiKhachMoi">
+                        <c:if test="${customer.maLoaiKhach==1}">
+                            <option value="1">Diamond</option>
+                            <option value="2">Platinium</option>
+                            <option value="3">Gold</option>
+                            <option value="4">Silver</option>
+                            <option value="5">Member</option>
+                        </c:if>
+                        <c:if test="${customer.maLoaiKhach==2}">
+                            <option value="2">Platinium</option>
+                            <option value="1">Diamond</option>
+                            <option value="3">Gold</option>
+                            <option value="4">Silver</option>
+                            <option value="5">Member</option>
+                        </c:if>
+                        <c:if test="${customer.maLoaiKhach==3}">
+                            <option value="3">Gold</option>
+                            <option value="1">Diamond</option>
+                            <option value="2">Platinium</option>
+                            <option value="4">Silver</option>
+                            <option value="5">Member</option>
+                        </c:if>
+                        <c:if test="${customer.maLoaiKhach==4}">
+                            <option value="4">Silver</option>
+                            <option value="1">Diamond</option>
+                            <option value="2">Platinium</option>
+                            <option value="3">Gold</option>
+                            <option value="5">Member</option>
+                        </c:if>
+                        <c:if test="${customer.maLoaiKhach==5}">
+                            <option value="5">Member</option>
+                            <option value="1">Diamond</option>
+                            <option value="2">Platinium</option>
+                            <option value="3">Gold</option>
+                            <option value="4">Silver</option>
+                        </c:if>
+
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="diaChimoi" class="form-label ">8. Nhập địa chỉ mới</label>
-                    <input type="text" class="form-control" id="diaChimoi" aria-describedby="emailHelp"
-                           value="2">
+                    <input type="text" class="form-control" id="diaChimoi" aria-describedby="emailHelp" name="diaChiMoi"
+                           value="${customer.diaChi}">
                 </div>
             </div>
         </div>
         <div>
-            <a class="btn btn-primary" href="/Employee">Quay lại</a>
-            <button type="submit" id="add" class="btn btn-outline-warning">Cập nhật</button>
+            <a class="btn btn-primary" href="/Customer">Quay lại</a>
+            <button type="submit" id="updateCustomer" class="btn btn-outline-warning">Cập nhật</button>
         </div>
     </form>
 </div>

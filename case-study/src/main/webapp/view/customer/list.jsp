@@ -60,7 +60,7 @@
 </div>
 <h1 class="bg-info text-center text-white p-3" style="margin-top: 150px">DANH SÁCH KHÁCH HÀNG</h1>
 
-<a class="btn btn-success" href="/Employee?action=addEmployee">Thêm mới khách hàng</a>
+<a class="btn btn-success" href="/Customer?action=addCustomer">Thêm mới khách hàng</a>
 <table class="table table-bordered table-hover table-light table-striped table-responsive">
     <thead class="table-primary text-center">
     <tr>
@@ -81,18 +81,13 @@
     <c:forEach items="${customerList}" var="customer">
         <tr>
             <td>${customer.maKhachHang}</td>
-<%--            <c:forEach  items="${customerTypeList}" var="customerType">--%>
-<%--               <c:if test="${customerType.maLoaiKhach==1}">--%>
-<%--&lt;%&ndash;                   <td>${customerType.tenLoaiKhach}</td>&ndash;%&gt;--%>
-<%--                   <td>1</td>--%>
-<%--               </c:if>--%>
-<%--            </c:forEach>--%>
-
-            <c:forEach var="customerType" items="${customerTypeList}">
-                <c:if test="${customerType.maLoaiKhach==customer.maLoaiKhach}">
-                    <td>${customerType.tenLoaiKhach}</td>
-                </c:if>
-            </c:forEach>
+                <%--            <c:forEach  items="${customerTypeList}" var="customerType">--%>
+                <%--               <c:if test="${customerType.maLoaiKhach==customer.maLoaiKhach}">--%>
+                <%--                   <td>${customerType.tenLoaiKhach}</td>--%>
+                <%--                   <td>1</td>--%>
+                <%--               </c:if>--%>
+                <%--            </c:forEach>--%>
+            <td>${customer.maLoaiKhach}</td>
             <td>${customer.hoTen}</td>
             <td>${customer.ngaySinh}</td>
             <td>
@@ -106,14 +101,16 @@
             <td>${customer.soCmnd}</td>
             <td>${customer.soDienThoai}</td>
             <td>${customer.email}</td>
+
             <td>${customer.diaChi}</td>
             <td>
                 <a class="btn btn-outline-warning"
-                   href="/Employee?action=updateEmployee&maKhachHang=${customer.maKhachHang}">Update</a>
+                   href="/Customer?action=updateCustomer&maKhachHang=${customer.maKhachHang}">Update</a>
             </td>
             <td>
                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal" onclick="getIdToDelete(${customer.maKhachHang})">
+                        data-bs-target="#deleteModal"
+                        onclick="getIdToDelete('${customer.maKhachHang}','${customer.hoTen}')">
                     Delete
                 </button>
             </td>
@@ -121,200 +118,6 @@
     </c:forEach>
 </table>
 
-
-<!--The Add modal ok-->
-<div class="modal" id="addModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-success text-white">
-                <h4 class="modal-title ">Thêm mới dịch vụ</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <select class="form-select-lg w-50 m-auto mt-3 border-success rounded-pill" name="" id="addSelect"
-                    onchange="displayInputAdd()">
-                <option value="none">Chọn loại dịch vụ</option>
-                <option value="house">Thêm mới House</option>
-                <option value="villa">Thêm mới Villa</option>
-                <option value="room">Thêm mới Room</option>
-            </select>
-
-            <form action="">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="tenDv" aria-describedby="emailHelp"
-                               placeholder="1. Nhập Tên dịch vụ">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="dienTich" aria-describedby="emailHelp"
-                               placeholder="2. Nhập Diện tích">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="chiPhiThue" aria-describedby="emailHelp"
-                               placeholder="3. Nhập chi phí thuê">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="soNguoiToiDa" aria-describedby="emailHelp"
-                               placeholder="4. Nhập số người tối đa">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="tieuChuanPhong" aria-describedby="emailHelp"
-                               placeholder="5. Nhập Tiêu chuẩn phòng">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="tienNghiKhac" aria-describedby="emailHelp"
-                               placeholder="6. Nhập Mô tả tiện nghi khác">
-                    </div>
-                    <div class="mb-3 dienTichHoBoi" style="display: none" id="dienTichHoBoi">
-                        <input type="text" class="form-control" aria-describedby="emailHelp"
-                               placeholder="Nhập Diện tích hồ bơi">
-                    </div>
-                    <div class="mb-3 soTang" style="display: none" id="soTang">
-                        <input type="text" class="form-control" aria-describedby="emailHelp"
-                               placeholder="Nhập Số tầng">
-                    </div>
-                    <div class="mb-3 dichVuMienPhi" style="display: none" id="dichVuMienPhi">
-                        <input type="text" class="form-control" aria-describedby="emailHelp"
-                               placeholder="Nhập dịch vụ miễn phí đi kèm">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" id="add" class="btn btn-outline-success">Thêm mới</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- The View Modal -->
-<div class="modal" id="viewModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h4 class="modal-title">VIEW SERVICE</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <div class="modal-body">
-                <table class="table table-bordered table-success table-hover">
-
-                    <tr>
-                        <th>#</th>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <th>Tên dịch vụ</th>
-                        <td>Villa Beach Front</td>
-                    </tr>
-                    <tr>
-                        <th>Diện tích</th>
-                        <td>25000</td>
-                    </tr>
-                    <tr>
-                        <th>Chi phí thuê</th>
-                        <td>1000000</td>
-                    </tr>
-                    <tr>
-                        <th>Số người tối đa</th>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <th>Tiêu chuẩn phòng</th>
-                        <td>vip</td>
-                    </tr>
-                    <tr>
-                        <th>Mô tả tiện nghi khác</th>
-                        <td>Có hồ bơi</td>
-                    </tr>
-                    <tr>
-                        <th>Diện tích hồ bơi</th>
-                        <td>500</td>
-                    </tr>
-                    <tr>
-                        <th>Số tầng</th>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <th>Dịch vụ miễn phí đi kèm</th>
-                        <td>Không</td>
-                    </tr>
-                </table>
-
-                <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
-                        data-bs-target="#updateModal">
-                    Update
-                </button>
-                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal">
-                    Delete
-                </button>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- The Update Modal ok-->
-<div class="modal" id="updateModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h4 class="modal-title">UPDATE SERVICE</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <form action="">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="tenDvMoi" class="form-label">ID</label>
-                        <input disabled type="text" class="form-control" id="idDichVu" aria-describedby="emailHelp"
-                               value="1">
-                    </div>
-                    <div class="mb-3">
-                        <label for="tenDvMoi" class="form-label">Tên dịch vụ</label>
-                        <input type="text" class="form-control" id="tenDvMoi" aria-describedby="emailHelp"
-                               value="Villa Beach Front">
-                    </div>
-                    <div class="mb-3">
-                        <label for="dienTichMoi" class="form-label">Diện tích</label>
-                        <input type="text" class="form-control" id="dienTichMoi" aria-describedby="emailHelp"
-                               value="25000">
-                    </div>
-                    <div class="mb-3">
-                        <label for="chiPhiThueMoi" class="form-label">Chi phí thuê</label>
-                        <input type="text" class="form-control" id="chiPhiThueMoi" aria-describedby="emailHelp"
-                               value="1000000">
-                    </div>
-                    <div class="mb-3">
-                        <label for="soNguoiToiDaMoi" class="form-label">Số người tối đa</label>
-                        <input type="text" class="form-control" id="soNguoiToiDaMoi" aria-describedby="emailHelp"
-                               value="10">
-                    </div>
-                    <div class="mb-3">
-                        <label for="tieuChuanPhongMoi" class="form-label">Tiêu chuẩn phòng</label>
-                        <input type="text" class="form-control" id="tieuChuanPhongMoi" aria-describedby="emailHelp"
-                               value="vip">
-                    </div>
-                    <div class="mb-3">
-                        <label for="tienNghiKhacMoi" class="form-label">Mô tả tiện nghi khác</label>
-                        <input type="text" class="form-control" id="tienNghiKhacMoi" aria-describedby="emailHelp"
-                               value="Có hồ bơi">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-warning">Update</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <!-- The Delete Modal ok-->
 <div class="modal" id="deleteModal">
@@ -325,72 +128,29 @@
                 <h4 class="modal-title">DELETE SERVICE</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
+            <form method="post" action="/Customer?action=deleteCustomer">
+                <div class="modal-body">
+                    <input type="hidden" name="idDelete" id="idDelete">
+                    Bạn muốn xóa khách hàng có
+                    ID: <span id="idkhachHang"></span>,
+                    Tên: <span id="tenKhachHang"></span>.
 
-            <div class="modal-body">
-                <p>Bạn muốn xóa service ......?</p>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </div>
-
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 <script>
-    window.onload = function () {
-        setStatusSummitBtn(false);
+    function getIdToDelete(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("idkhachHang").innerText = id;
+        document.getElementById("tenKhachHang").innerText = name;
     }
-
-    function setStatusSummitBtn(action) {
-        // false => tắt ~ disable
-        // true => bật ~ enable
-        if (action === false) {
-            document.getElementById("add").disabled = true;
-        } else document.getElementById("add").disabled = false;
-
-    }
-
-    function displayInputAdd() {
-        let value = document.getElementById("addSelect").value;
-        let dienTichHoBoi = document.getElementById("dienTichHoBoi");
-        let soTang = document.getElementById("soTang");
-        let dichVuMienPhi = document.getElementById("dichVuMienPhi");
-        // let addBtn = document.getElementById("add");
-        // console.log(addBtn)
-        switch (value) {
-            case "none":
-                setStatusSummitBtn(false);
-                break;
-            case "house":
-                dienTichHoBoi.style.display = "none"
-                soTang.style.display = "block"
-                dichVuMienPhi.style.display = "none"
-                setStatusSummitBtn(true);
-                console.log(1)
-                break;
-            case "villa":
-                soTang
-                //villa
-                dienTichHoBoi.style.display = "block"
-                soTang.style.display = "block"
-                dichVuMienPhi.style.display = "none"
-                setStatusSummitBtn(true);
-                console.log(2)
-                break;
-            case "room":
-                //room
-                dienTichHoBoi.style.display = "none"
-                soTang.style.display = "none"
-                dichVuMienPhi.style.display = "block"
-                setStatusSummitBtn(true);
-                console.log(3)
-                break;
-        }
-    }
-
 </script>
 <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>

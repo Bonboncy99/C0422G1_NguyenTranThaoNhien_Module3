@@ -1,19 +1,19 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Asus
   Date: 8/5/2022
-  Time: 11:07 PM
+  Time: 11:06 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+
 </head>
 <body>
-<%--navbar--%>
 <div class="fixed-top container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -58,209 +58,123 @@
         </div>
     </nav>
 </div>
+<h1 class="bg-info text-center text-white p-3" style="margin-top: 150px">DANH SÁCH KHÁCH HÀNG</h1>
 
-<h1 class="bg-danger text-center text-white p-3" style="margin-top: 150px">DANH SÁCH NHÂN VIÊN</h1>
-
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">
-    Thêm mới nhân viên
-</button>
+<a class="btn btn-success" href="/Employee?action=addEmployee">Thêm mới khách hàng</a>
 <table class="table table-bordered table-hover table-light table-striped table-responsive">
-    <thead class="table-danger text-center">
+    <thead class="table-primary text-center">
     <tr>
         <th>#</th>
-        <th>Tên nhân viên</th>
+        <th>Loại khách</th>
+        <th>Họ và tên</th>
         <th>Ngày sinh</th>
+        <th>Giới tính</th>
         <th>Số CMND</th>
         <th>Số điện thoại</th>
         <th>Email</th>
-        <th>Trình độ</th>
-        <th>Vị trí</th>
-        <th>Bộ phận</th>
-        <th>Lương</th>
+        <th>Địa chỉ</th>
         <th colspan="3">Các chức năng</th>
     </tr>
     </thead>
-    <tr>
-        <td>1</td>
-        <td>Nguyễn Văn An</td>
-        <td>1970-11-07</td>
-        <td>456231786</td>
-        <td>0901234121</td>
-        <td>annguyen@gmail.com</td>
-        <td>3</td>
-        <td>1</td>
-        <td>2</td>
-        <td>10000000</td>
-        <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                Delete
-            </button>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Nguyễn Văn An</td>
-        <td>1970-11-07</td>
-        <td>456231786</td>
-        <td>0901234121</td>
-        <td>annguyen@gmail.com</td>
-        <td>3</td>
-        <td>1</td>
-        <td>2</td>
-        <td>10000000</td>
-        <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                Delete
-            </button>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Nguyễn Văn An</td>
-        <td>1970-11-07</td>
-        <td>456231786</td>
-        <td>0901234121</td>
-        <td>annguyen@gmail.com</td>
-        <td>3</td>
-        <td>1</td>
-        <td>2</td>
-        <td>10000000</td>
-        <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                Delete
-            </button>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Nguyễn Văn An</td>
-        <td>1970-11-07</td>
-        <td>456231786</td>
-        <td>0901234121</td>
-        <td>annguyen@gmail.com</td>
-        <td>3</td>
-        <td>1</td>
-        <td>2</td>
-        <td>10000000</td>
-        <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                Delete
-            </button>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Nguyễn Văn An</td>
-        <td>1970-11-07</td>
-        <td>456231786</td>
-        <td>0901234121</td>
-        <td>annguyen@gmail.com</td>
-        <td>3</td>
-        <td>1</td>
-        <td>2</td>
-        <td>10000000</td>
-        <td>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal">
-                Update
-            </button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                Delete
-            </button>
-        </td>
-    </tr>
 
+
+    <c:forEach items="${customerList}" var="customer">
+        <tr>
+            <td>${customer.maKhachHang}</td>
+<%--            <c:forEach  items="${customerTypeList}" var="customerType">--%>
+<%--               <c:if test="${customerType.maLoaiKhach==1}">--%>
+<%--&lt;%&ndash;                   <td>${customerType.tenLoaiKhach}</td>&ndash;%&gt;--%>
+<%--                   <td>1</td>--%>
+<%--               </c:if>--%>
+<%--            </c:forEach>--%>
+
+            <c:forEach var="customerType" items="${customerTypeList}">
+                <c:if test="${customerType.maLoaiKhach==customer.maLoaiKhach}">
+                    <td>${customerType.tenLoaiKhach}</td>
+                </c:if>
+            </c:forEach>
+            <td>${customer.hoTen}</td>
+            <td>${customer.ngaySinh}</td>
+            <td>
+                <c:if test="${customer.gioiTinh == true}">
+                    Nam
+                </c:if>
+                <c:if test="${customer.gioiTinh == false}">
+                    Nữ
+                </c:if>
+            </td>
+            <td>${customer.soCmnd}</td>
+            <td>${customer.soDienThoai}</td>
+            <td>${customer.email}</td>
+            <td>${customer.diaChi}</td>
+            <td>
+                <a class="btn btn-outline-warning"
+                   href="/Employee?action=updateEmployee&maKhachHang=${customer.maKhachHang}">Update</a>
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal" onclick="getIdToDelete(${customer.maKhachHang})">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </c:forEach>
 </table>
 
 
 <!--The Add modal ok-->
 <div class="modal" id="addModal">
     <div class="modal-dialog">
-        <div class="modal-content text-success fw-bold">
+        <div class="modal-content">
             <div class="modal-header bg-success text-white">
-                <h4 class="modal-title text-center">Thêm mới Nhân viên</h4>
+                <h4 class="modal-title ">Thêm mới dịch vụ</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
+            <select class="form-select-lg w-50 m-auto mt-3 border-success rounded-pill" name="" id="addSelect"
+                    onchange="displayInputAdd()">
+                <option value="none">Chọn loại dịch vụ</option>
+                <option value="house">Thêm mới House</option>
+                <option value="villa">Thêm mới Villa</option>
+                <option value="room">Thêm mới Room</option>
+            </select>
+
             <form action="">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="ten" class="form-label ">1. Nhập tên nhân viên</label>
-                        <input type="text" class="form-control" id="ten" aria-describedby="emailHelp"
-                               name="ten" placeholder="Nhập tên nhân viên">
+                        <input type="text" class="form-control" id="tenDv" aria-describedby="emailHelp"
+                               placeholder="1. Nhập Tên dịch vụ">
                     </div>
                     <div class="mb-3">
-                        <label for="ngaySinh" class="form-label ">2. Nhập ngày sinh </label>
-                        <input type="text" class="form-control" id="ngaySinh" aria-describedby="emailHelp"
-                               name="ngaySinh" placeholder="Nhập ngày sinh">
+                        <input type="text" class="form-control" id="dienTich" aria-describedby="emailHelp"
+                               placeholder="2. Nhập Diện tích">
                     </div>
                     <div class="mb-3">
-                        <label for="soCMND" class="form-label ">3. Nhập số CMND</label>
-                        <input type="text" class="form-control" id="soCMND" aria-describedby="emailHelp"
-                               name="soCMND" placeholder="Nhập số CMND">
+                        <input type="text" class="form-control" id="chiPhiThue" aria-describedby="emailHelp"
+                               placeholder="3. Nhập chi phí thuê">
                     </div>
                     <div class="mb-3">
-                        <label for="soDienThoai" class="form-label ">4. Nhập số điện thoại</label>
-                        <input type="text" class="form-control" id="soDienThoai" aria-describedby="emailHelp"
-                               name="soDienThoai" placeholder="Nhập số điện thoại">
+                        <input type="text" class="form-control" id="soNguoiToiDa" aria-describedby="emailHelp"
+                               placeholder="4. Nhập số người tối đa">
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label ">5. Nhập email</label>
-                        <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                               name="email" placeholder="Nhập email">
+                        <input type="text" class="form-control" id="tieuChuanPhong" aria-describedby="emailHelp"
+                               placeholder="5. Nhập Tiêu chuẩn phòng">
                     </div>
                     <div class="mb-3">
-                        <label for="trinhDo" class="form-label ">6. Chọn trình độ</label>
-                        <select name="viTri" id="trinhDo">
-                            <option value="1"> Trung cấp</option>
-                            <option value="2">Cao đẳng</option>
-                            <option value="3">Đại học</option>
-                            <option value="4">sau đại học</option>
-                        </select>
+                        <input type="text" class="form-control" id="tienNghiKhac" aria-describedby="emailHelp"
+                               placeholder="6. Nhập Mô tả tiện nghi khác">
                     </div>
-                    <div class="mb-3">
-                        <label for="viTri" class="form-label ">7. Chọn vị trí</label>
-                        <select name="viTri" id="viTri">
-                            <option value="1">Lễ tân</option>
-                            <option value="2">Phục vụ</option>
-                            <option value="3">Chuyên viên</option>
-                            <option value="4">Giám sát</option>
-                            <option value="5">Quản lý</option>
-                            <option value="6">Giám đốc</option>
-                        </select>
+                    <div class="mb-3 dienTichHoBoi" style="display: none" id="dienTichHoBoi">
+                        <input type="text" class="form-control" aria-describedby="emailHelp"
+                               placeholder="Nhập Diện tích hồ bơi">
                     </div>
-                    <div class="mb-3">.
-                        <label for="boPhan" class="form-label ">8. Chọn bộ phận</label>
-                        <select name="boPhan" id="boPhan">
-                            <option value="1">Sale – Marketing</option>
-                            <option value="2">Hành Chính</option>
-                            <option value="3">Phục vụ</option>
-                            <option value="4">Quản lý</option>
-                        </select>
+                    <div class="mb-3 soTang" style="display: none" id="soTang">
+                        <input type="text" class="form-control" aria-describedby="emailHelp"
+                               placeholder="Nhập Số tầng">
                     </div>
-                    <div class="mb-3">
-                        <label for="luong" class="form-label ">9.Nhập lương</label>
-                        <input type="text" class="form-control" id="luong" aria-describedby="emailHelp"
-                               name="luong" placeholder="Nhập Mô tả tiện nghi khác">
+                    <div class="mb-3 dichVuMienPhi" style="display: none" id="dichVuMienPhi">
+                        <input type="text" class="form-control" aria-describedby="emailHelp"
+                               placeholder="Nhập dịch vụ miễn phí đi kèm">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -346,80 +260,56 @@
 </div>
 
 <!-- The Update Modal ok-->
-<div class="modal " id="updateModal">
-    <div class="modal-dialog text-warning fw-bold">
+<div class="modal" id="updateModal">
+    <div class="modal-dialog">
         <div class="modal-content">
 
-            <div class="modal-header bg-warning text-center text-white">
-                <h4 class="modal-title">Thay đổi nhân viên</h4>
+            <div class="modal-header">
+                <h4 class="modal-title">UPDATE SERVICE</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <form action="">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="tenMoi" class="form-label ">1. Nhập tên nhân viên</label>
-                        <input type="text" class="form-control" id="tenMoi" aria-describedby="emailHelp"
-                               name="tenMoi" placeholder="Nhập tên nhân viên">
+                        <label for="tenDvMoi" class="form-label">ID</label>
+                        <input disabled type="text" class="form-control" id="idDichVu" aria-describedby="emailHelp"
+                               value="1">
                     </div>
                     <div class="mb-3">
-                        <label for="ngaySinhMoi" class="form-label ">2. Nhập ngày sinh </label>
-                        <input type="text" class="form-control" id="ngaySinhMoi" aria-describedby="emailHelp"
-                               name="ngaySinhMoi" placeholder="Nhập ngày sinh">
+                        <label for="tenDvMoi" class="form-label">Tên dịch vụ</label>
+                        <input type="text" class="form-control" id="tenDvMoi" aria-describedby="emailHelp"
+                               value="Villa Beach Front">
                     </div>
                     <div class="mb-3">
-                        <label for="soCMNDMoi" class="form-label ">3. Nhập số CMND</label>
-                        <input type="text" class="form-control" id="soCMNDMoi" aria-describedby="emailHelp"
-                               name="soCMNDMoi" placeholder="Nhập số CMND">
+                        <label for="dienTichMoi" class="form-label">Diện tích</label>
+                        <input type="text" class="form-control" id="dienTichMoi" aria-describedby="emailHelp"
+                               value="25000">
                     </div>
                     <div class="mb-3">
-                        <label for="soDienThoaiMoi" class="form-label ">4. Nhập số điện thoại</label>
-                        <input type="text" class="form-control" id="soDienThoaiMoi" aria-describedby="emailHelp"
-                               name="soDienThoaiMoi" placeholder="Nhập số điện thoại">
+                        <label for="chiPhiThueMoi" class="form-label">Chi phí thuê</label>
+                        <input type="text" class="form-control" id="chiPhiThueMoi" aria-describedby="emailHelp"
+                               value="1000000">
                     </div>
                     <div class="mb-3">
-                        <label for="emailMoi" class="form-label ">5. Nhập email</label>
-                        <input type="text" class="form-control" id="emailMoi" aria-describedby="emailHelp"
-                               name="emailMoi" placeholder="Nhập email">
+                        <label for="soNguoiToiDaMoi" class="form-label">Số người tối đa</label>
+                        <input type="text" class="form-control" id="soNguoiToiDaMoi" aria-describedby="emailHelp"
+                               value="10">
                     </div>
                     <div class="mb-3">
-                        <label for="trinhDoMoi" class="form-label ">6. Chọn trình độ</label>
-                        <select name="trinhDoMoi" id="trinhDoMoi">
-                            <option value="1"> Trung cấp</option>
-                            <option value="2">Cao đẳng</option>
-                            <option value="3">Đại học</option>
-                            <option value="4">sau đại học</option>
-                        </select>
+                        <label for="tieuChuanPhongMoi" class="form-label">Tiêu chuẩn phòng</label>
+                        <input type="text" class="form-control" id="tieuChuanPhongMoi" aria-describedby="emailHelp"
+                               value="vip">
                     </div>
                     <div class="mb-3">
-                        <label for="viTriMoi" class="form-label ">7. Chọn vị trí</label>
-                        <select name="viTriMoi" id="viTriMoi">
-                            <option value="1">Lễ tân</option>
-                            <option value="2">Phục vụ</option>
-                            <option value="3">Chuyên viên</option>
-                            <option value="4">Giám sát</option>
-                            <option value="5">Quản lý</option>
-                            <option value="6">Giám đốc</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">.
-                        <label for="boPhanMoi" class="form-label ">8. Chọn bộ phận</label>
-                        <select name="boPhanMoi" id="boPhanMoi">
-                            <option value="1">Sale – Marketing</option>
-                            <option value="2">Hành Chính</option>
-                            <option value="3">Phục vụ</option>
-                            <option value="4">Quản lý</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="luongMoi" class="form-label ">9.Nhập lương</label>
-                        <input type="text" class="form-control" id="luongMoi" aria-describedby="emailHelp"
-                               name="luongMoi" placeholder="Nhập Lương mơi">
+                        <label for="tienNghiKhacMoi" class="form-label">Mô tả tiện nghi khác</label>
+                        <input type="text" class="form-control" id="tienNghiKhacMoi" aria-describedby="emailHelp"
+                               value="Có hồ bơi">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" id="add"  class="btn btn-outline-warning">Thêm mới</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-warning">Update</button>
                 </div>
             </form>
         </div>
@@ -437,7 +327,7 @@
             </div>
 
             <div class="modal-body">
-                <p>Bạn muốn xóa nhân viên ......?</p>
+                <p>Bạn muốn xóa service ......?</p>
             </div>
 
             <div class="modal-footer">
@@ -449,6 +339,59 @@
     </div>
 </div>
 
+<script>
+    window.onload = function () {
+        setStatusSummitBtn(false);
+    }
+
+    function setStatusSummitBtn(action) {
+        // false => tắt ~ disable
+        // true => bật ~ enable
+        if (action === false) {
+            document.getElementById("add").disabled = true;
+        } else document.getElementById("add").disabled = false;
+
+    }
+
+    function displayInputAdd() {
+        let value = document.getElementById("addSelect").value;
+        let dienTichHoBoi = document.getElementById("dienTichHoBoi");
+        let soTang = document.getElementById("soTang");
+        let dichVuMienPhi = document.getElementById("dichVuMienPhi");
+        // let addBtn = document.getElementById("add");
+        // console.log(addBtn)
+        switch (value) {
+            case "none":
+                setStatusSummitBtn(false);
+                break;
+            case "house":
+                dienTichHoBoi.style.display = "none"
+                soTang.style.display = "block"
+                dichVuMienPhi.style.display = "none"
+                setStatusSummitBtn(true);
+                console.log(1)
+                break;
+            case "villa":
+                soTang
+                //villa
+                dienTichHoBoi.style.display = "block"
+                soTang.style.display = "block"
+                dichVuMienPhi.style.display = "none"
+                setStatusSummitBtn(true);
+                console.log(2)
+                break;
+            case "room":
+                //room
+                dienTichHoBoi.style.display = "none"
+                soTang.style.display = "none"
+                dichVuMienPhi.style.display = "block"
+                setStatusSummitBtn(true);
+                console.log(3)
+                break;
+        }
+    }
+
+</script>
 <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html>

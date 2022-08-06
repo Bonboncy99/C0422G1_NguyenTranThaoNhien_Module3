@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Asus
-  Date: 8/5/2022
-  Time: 11:07 PM
+  Date: 8/6/2022
+  Time: 9:07 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -265,7 +265,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" id="addBtn" class="btn btn-outline-success">Thêm mới</button>
+                    <button type="submit" id="add" class="btn btn-outline-success">Thêm mới</button>
                 </div>
             </form>
         </div>
@@ -419,7 +419,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" id="add"  class="btn btn-outline-warning">Thêm mới</button>
+                    <button type="submit" id="addBtn"  class="btn btn-outline-warning">Thêm mới</button>
                 </div>
             </form>
         </div>

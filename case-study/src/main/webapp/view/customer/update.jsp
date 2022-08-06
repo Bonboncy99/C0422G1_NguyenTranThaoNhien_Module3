@@ -16,9 +16,9 @@
 <h4 class="p-3 bg-warning text-white text-center">Cập nhật Khách hàng</h4>
 <div class="d-flex justify-content-center">
     <form action="" method="post" class="text-warning fw-bold bg-light w-75 mt-5 mb-5 shadow-lg p-5">
-            <div class="mb-3 w-50 d-flex justify-content-center">
-                <input disabled type="text" class="form-control" id="idDichVuMoi" value="1">
-            </div>
+        <div class="mb-3 w-50 d-flex justify-content-center">
+            <input disabled type="text" class="form-control" id="idDichVuMoi" value="1">
+        </div>
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="mb-3">

@@ -36,7 +36,7 @@ public class FuramaServlet extends HttpServlet {
     }
 
     private void goToCustomerPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/customer/list.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Customer");
         requestDispatcher.forward(request,response);
     }
 

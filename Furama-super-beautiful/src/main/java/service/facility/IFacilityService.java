@@ -1,0 +1,13 @@
+package service.facility;
+
+import model.facility.Facility;
+
+import java.util.List;
+
+public interface IFacilityService {
+    List<Facility> FindAll();
+    boolean addFacility(Facility facility);
+    boolean updateFacility(Facility facility);
+    boolean deleteFacility(int id);
+    Facility findById(int id);
+}

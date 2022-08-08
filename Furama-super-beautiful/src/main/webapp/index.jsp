@@ -10,9 +10,13 @@
 <head>
   <title>Title</title>
   <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
-
+<style>
+  body{
+    background: url("https://img.freepik.com/free-vector/soft-colorful-watercolor-texture-decorative-background-vector_1055-12347.jpg?w=2000");
+  }
+</style>
 </head>
-<body class="bg-dark">
+<body>
 <!--navbar-->
 <div class="fixed-top" style="margin: 0">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -111,7 +115,7 @@
               allowfullscreen></iframe>
     </div>
     <div class="col-md-4">
-      <p class="text-white">Overlooking the long stretch of wide white sand on Danang Beach, Furama Resort Danang is a gateway to
+      <p class="text-secondary">Overlooking the long stretch of wide white sand on Danang Beach, Furama Resort Danang is a gateway to
         three World Heritage Sites of Hoi An (20 minutes), My Son (90 minutes) and Hue (2 hours). The 198 rooms
         and suites plus 70 two to four bedroom pool villas feature tasteful décor, designed with traditional
         Vietnamese style and a touch of French colonial architecture and guarantee the Vietnam’s the most

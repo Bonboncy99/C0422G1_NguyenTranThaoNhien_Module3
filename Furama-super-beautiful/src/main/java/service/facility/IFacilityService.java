@@ -10,4 +10,5 @@ public interface IFacilityService {
     boolean updateFacility(Facility facility);
     boolean deleteFacility(int id);
     Facility findById(int id);
+
 }

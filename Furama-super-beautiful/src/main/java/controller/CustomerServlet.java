@@ -16,10 +16,7 @@ import java.util.List;
 @WebServlet(name = "CustomerServlet", value = "/Customer")
 public class CustomerServlet extends HttpServlet {
     ICustomerService customerService = new CustomerService();
-// k dufng interface dc
-//    ICustomerTypeService customerTypeService =  new CustomerTypeService();
-
-    CustomerTypeService customerTypeService = new CustomerTypeService();
+    ICustomerTypeService customerTypeService=  new CustomerTypeService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -38,6 +35,9 @@ public class CustomerServlet extends HttpServlet {
                 showListCustomer(request,response);
         }
     }
+
+
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -55,11 +55,28 @@ public class CustomerServlet extends HttpServlet {
             case "deleteCustomer":
                 deleteCustomer(request,response);
                 break;
+            case "searchCustomer":
+                showListSearch(request,response);
             default:
                 showListCustomer(request,response);
 
         }
     }
+    private void showListSearch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String customerTypeId = request.getParameter("customerTypeId");
+        List<Customer>customerList = customerService.searchCustomer(name,phone,email,customerTypeId);
+        List<CustomerType>customerTypeList = customerTypeService.FindAll();
+        request.setAttribute("customerList",customerList);
+        request.setAttribute("customerTypeList",customerTypeList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/customer/list.jsp");
+        requestDispatcher.forward(request,response);
+    }
+
+
+
     private void showUpdateCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("idUpdate"));
         Customer customer = customerService.findById(id);
@@ -75,6 +92,8 @@ public class CustomerServlet extends HttpServlet {
 
     private void showAddCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/customer/add.jsp");
+        List <CustomerType>customerTypeList = customerTypeService.FindAll();
+        request.setAttribute("customerTypeList",customerTypeList);
         requestDispatcher.forward(request,response);
     }
 
@@ -111,11 +130,13 @@ public class CustomerServlet extends HttpServlet {
         String email =request.getParameter("email");
         String address=request.getParameter("address");
         Customer customer = new Customer(id,customerTypeId,name,dateOfBirth,gender,idCard,phoneNumber,email,address);
-        String message = "Fail";
+        boolean check = false;
         if (customerService.updateCustomer(customer)) {
-            message = "Success";
+            check = true;
         }
-        request.setAttribute("message",message);
+        request.setAttribute("check",check);
+        List<CustomerType> customerTypeList = customerTypeService.FindAll();
+        request.setAttribute("customer",customer);
         request.getRequestDispatcher("view/customer/update.jsp").forward(request,response);
     }
 
@@ -129,11 +150,11 @@ public class CustomerServlet extends HttpServlet {
          String email =request.getParameter("email");
          String address=request.getParameter("address");
          Customer customer = new Customer(customerTypeId,name,dateOfBirth,gender,idCard,phoneNumber,email,address);
-         String message = "Fail";
+         boolean check = false;
          if (customerService.addCustomer(customer)) {
-             message = "Success";
+             check = true;
          }
-         request.setAttribute("message",message);
+         request.setAttribute("check",check);
          request.getRequestDispatcher("view/customer/add.jsp").forward(request,response);
     }
 }

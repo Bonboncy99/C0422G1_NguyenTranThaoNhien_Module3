@@ -46,7 +46,8 @@ public class FuramaServlet extends HttpServlet {
     }
 
     private void goToServicePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Facility");
+        requestDispatcher.forward(request,response);
     }
 
     private void goToCustomerPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

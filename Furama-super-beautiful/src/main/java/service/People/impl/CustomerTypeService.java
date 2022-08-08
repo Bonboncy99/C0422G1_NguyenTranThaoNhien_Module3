@@ -5,10 +5,11 @@ import model.people.CustomerType;
 import repository.people.ICustomerTypeRepository;
 import repository.people.impl.CustomerTypeRepository;
 import service.People.ICustomerService;
+import service.People.ICustomerTypeService;
 
 import java.util.List;
 
-public class CustomerTypeService implements ICustomerTypeRepository {
+public class CustomerTypeService implements ICustomerTypeService {
     private ICustomerTypeRepository customerTypeRepository = new CustomerTypeRepository();
 
     @Override

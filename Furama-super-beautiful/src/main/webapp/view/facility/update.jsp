@@ -15,11 +15,56 @@
 
 </head>
 <body>
-UPDATE
-<h1>UPDATE FACILITY</h1>
+<!--navbar-->
+<div class="fixed-top" style="margin: 0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class=" navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="container" style="width: 60px;height: 60px">
+                        <a class="navbar-brand" href="/Furama">
+                            <img class="img-fluid" src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" alt="">
+                        </a>
+                    </div>
+
+                    <li class="nav-item">
+                        <a class="nav-link  fw-bold" href="/Furama?action=employee">Employee</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link  fw-bold" href="/Furama?action=customer" tabindex="-1" aria-disabled="true">Customer</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link  fw-bold" href="/Furama?action=service" tabindex="-1" aria-disabled="true">Service</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link  fw-bold" href="/Furama?action=contract" tabindex="-1" aria-disabled="true">Contract</a>
+                    </li>
+                </ul>
+                <form class="d-flex ">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <div>
+                    <a href="">Nguyễn Trần Thảo Nhiên</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<h1 class="p-3 text-white text-center bg-warning">UPDATE FACILITY</h1>
 <%--<c:if test="${mess!=null}">--%>
     <p>${mess}</p>
 <%--</c:if>--%>
+
+
 
 <div class="d-flex justify-content-center">
     <form action="/Facility?action=updateFacility" method="post" class="w-50">
@@ -162,6 +207,41 @@ UPDATE
     }
 </script>
 
+<button type="button" hidden class="btn btn-primary" id="modalBtn" data-bs-toggle="modal" data-bs-target="#resultMess">
+    Open modal
+</button>
+<div class="modal" id="resultMess">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="d-flex justify-content-center">
+                    <c:if test="${check=true}">
+                        <p class="p-3 bg-success text-center text-white w-50">SUCCESS</p>
+                    </c:if>
+                    <c:if test="${check=false}">
+                        <p class="p-3 bg-danger text-center text-white w-50">SUCCESS</p>
+                    </c:if>
+                </div>            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById("resultMess").click();
+</script>
 
 </body>
 </html>

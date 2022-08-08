@@ -33,4 +33,11 @@ public class CustomerService implements ICustomerService {
     public Customer findById(int id) {
         return customerRepository.findById(id);
     }
+
+    @Override
+    public List<Customer> searchCustomer(String name, String phone, String email, String customerTypeId) {
+        return customerRepository.searchCustomer(name,phone,email,customerTypeId);
+    }
+
+
 }

@@ -10,4 +10,6 @@ public interface ICustomerService {
     boolean updateCustomer(Customer customer);
     boolean deleteCustomer(int id);
     Customer findById(int id);
+    List<Customer>searchCustomer(String name,String phone,String email,String customerTypeId);
+
 }

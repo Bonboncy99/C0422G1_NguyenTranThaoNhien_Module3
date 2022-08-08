@@ -15,6 +15,7 @@ public class Facility {
     private String facilityFree;
 
     public Facility() {
+
     }
 
     public Facility(String facility_name, int area, double cost, int max_people, int rent_type_id, int facility_type_id, String standard_room, String description_other_convenience, double pool_area, int number_of_floor, String facility_free) {

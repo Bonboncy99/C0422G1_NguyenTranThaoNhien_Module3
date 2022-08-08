@@ -18,12 +18,12 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "FacilityServlet", urlPatterns = {"","/Facility"})
+@WebServlet(name = "FacilityServlet", urlPatterns = {"/Facility"})
 public class FacilityServlet extends HttpServlet {
+
     IFacilityService facilityService = new FacilityService();
 
-//    IFacilityTypeService facilityTypeService = new FacilityTypeService();
-    FacilityTypeService facilityTypeService = new FacilityTypeService();
+    IFacilityTypeService facilityTypeService = new FacilityTypeService();
     IRentTypeService rentTypeService = new RentTypeService();
 
     @Override
@@ -129,6 +129,22 @@ public class FacilityServlet extends HttpServlet {
         double poolArea =Double.parseDouble(request.getParameter("poolArea"));
         int numberOfFloor= Integer.parseInt(request.getParameter("numberOfFloor"));
         String facilityFree = request.getParameter("facilityFree");
+        switch (facilityTypeId){
+            case 1:
+                facilityFree="";
+                break;
+            case 2:
+                facilityFree="";
+                poolArea=0;
+                break;
+            case 3:
+                standardRoom  = "";
+                descriptionOtherConvenience ="";
+                poolArea =0;
+                numberOfFloor=0;
+                break;
+        }
+
         Facility facility = new Facility(id,facilityName,area,cost,maxPeople,
                 rentTypeId,facilityTypeId,standardRoom,descriptionOtherConvenience
                 ,poolArea,numberOfFloor,facilityFree);
@@ -154,14 +170,32 @@ public class FacilityServlet extends HttpServlet {
          double poolArea =Double.parseDouble(request.getParameter("poolArea"));
          int numberOfFloor= Integer.parseInt(request.getParameter("numberOfFloor"));
          String facilityFree = request.getParameter("facilityFree");
+
+         switch (facilityTypeId){
+             case 1:
+                 facilityFree="";
+                 break;
+             case 2:
+                 facilityFree="";
+                 poolArea = 0;
+                 break;
+             case 3:
+                  standardRoom  = "";
+                  descriptionOtherConvenience ="";
+                  poolArea = 0;
+                  numberOfFloor = 0;
+                 break;
+         }
+
          Facility facility = new Facility(facilityName,area,cost,maxPeople,
                  rentTypeId,facilityTypeId,standardRoom,descriptionOtherConvenience
                  ,poolArea,numberOfFloor,facilityFree);
          String message = "FAIL";
+         boolean check=false;
          if (facilityService.addFacility(facility)) {
-             message = "SUCCESS";
+             check = true;
          }
-         request.setAttribute("message",message);
+         request.setAttribute("check",check);
          RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/facility/add.jsp");
          requestDispatcher.forward(request,response);
     }

@@ -12,6 +12,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CustomerServlet", value = "/Customer")
 public class CustomerServlet extends HttpServlet {
@@ -47,7 +48,7 @@ public class CustomerServlet extends HttpServlet {
         }
         switch (action){
             case "addCustomer":
-                AddCustomer(request,response);
+                addCustomer(request,response);
                 break;
             case "updateCustomer":
                 updateCustomer(request,response);
@@ -130,6 +131,14 @@ public class CustomerServlet extends HttpServlet {
         String email =request.getParameter("email");
         String address=request.getParameter("address");
         Customer customer = new Customer(id,customerTypeId,name,dateOfBirth,gender,idCard,phoneNumber,email,address);
+        Map<String,String>errorList = customerService.checkValidateCustomer(customer);
+        if (errorList.isEmpty()){
+            customerService.updateCustomer(customer);
+            showListCustomer(request,response);
+        } else {
+            request.setAttribute("errorList",errorList);
+            request.setAttribute("customer",customer);
+        }
         boolean check = false;
         if (customerService.updateCustomer(customer)) {
             check = true;
@@ -140,7 +149,7 @@ public class CustomerServlet extends HttpServlet {
         request.getRequestDispatcher("view/customer/update.jsp").forward(request,response);
     }
 
-    private void AddCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void addCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          int customerTypeId = Integer.parseInt(request.getParameter("customerType"));
          String name = request.getParameter("name");
          String dateOfBirth =request.getParameter("dayOfBirth");
@@ -150,11 +159,24 @@ public class CustomerServlet extends HttpServlet {
          String email =request.getParameter("email");
          String address=request.getParameter("address");
          Customer customer = new Customer(customerTypeId,name,dateOfBirth,gender,idCard,phoneNumber,email,address);
-         boolean check = false;
-         if (customerService.addCustomer(customer)) {
-             check = true;
-         }
-         request.setAttribute("check",check);
-         request.getRequestDispatcher("view/customer/add.jsp").forward(request,response);
+        Map<String,String>errorList=customerService.checkValidateCustomer(customer);
+        if (errorList.isEmpty()) {
+            boolean check = customerService.addCustomer(customer);
+            showListCustomer(request,response);
+        } else {
+            request.setAttribute("errorList",errorList);
+            request.setAttribute("customer",customer);
+            List<CustomerType>customerTypeList = customerTypeService.FindAll();
+            request.setAttribute("customerTypeList",customerTypeList);
+            request.getRequestDispatcher("view/customer/add.jsp").forward(request,response);
+        }
+
+
+//        boolean check = false;
+//         if (customerService.addCustomer(customer)) {
+//             check = true;
+//         }
+//         request.setAttribute("check",check);
+//         request.getRequestDispatcher("view/customer/add.jsp").forward(request,response);
     }
 }

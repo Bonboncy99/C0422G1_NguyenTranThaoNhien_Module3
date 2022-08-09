@@ -60,7 +60,7 @@ public class FacilityRepository implements IFacilityrepository {
     public boolean addFacility(Facility facility) {
         Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement =connection.prepareStatement(ADD_FACILITY);
+                PreparedStatement preparedStatement =connection.prepareStatement(ADD_FACILITY);
 
             preparedStatement.setString(1,facility.getFacilityName());
             preparedStatement.setInt(2,facility.getArea());

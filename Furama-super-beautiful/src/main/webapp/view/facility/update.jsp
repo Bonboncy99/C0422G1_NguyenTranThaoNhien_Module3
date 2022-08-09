@@ -7,105 +7,67 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="/view/include/navbar.jsp" %>
+
 
 <html>
 <head>
     <title>Update Facility</title>
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
-
+    <style>
+        body {
+            background: url("https://img.freepik.com/free-vector/soft-yellow-watercolor-texture-decorative-background-vector_1055-12504.jpg?w=2000");
+        }
+    </style>
 </head>
 <body>
-<!--navbar-->
-<div class="fixed-top" style="margin: 0">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class=" navbar-nav me-auto mb-2 mb-lg-0">
-                    <div class="container" style="width: 60px;height: 60px">
-                        <a class="navbar-brand" href="/Furama">
-                            <img class="img-fluid" src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" alt="">
-                        </a>
-                    </div>
-
-                    <li class="nav-item">
-                        <a class="nav-link  fw-bold" href="/Furama?action=employee">Employee</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link  fw-bold" href="/Furama?action=customer" tabindex="-1" aria-disabled="true">Customer</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link  fw-bold" href="/Furama?action=service" tabindex="-1" aria-disabled="true">Service</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link  fw-bold" href="/Furama?action=contract" tabindex="-1" aria-disabled="true">Contract</a>
-                    </li>
-                </ul>
-                <form class="d-flex ">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <div>
-                    <a href="">Nguyễn Trần Thảo Nhiên</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-</div>
 <h1 class="p-3 text-white text-center bg-warning">UPDATE FACILITY</h1>
 <%--<c:if test="${mess!=null}">--%>
-    <p>${mess}</p>
+<p>${mess}</p>
 <%--</c:if>--%>
-
-
-
 <div class="d-flex justify-content-center">
-    <form action="/Facility?action=updateFacility" method="post" class="w-50">
-        <div class="row">
-            <p>select facility to add</p>
-            <select name="facilityTypeId" id="FacilityType" onchange="displayInput()">
-
-                <c:forEach items="${facilityTypeList}" var="facilityType">
-                    <c:if test="${facility.facilityTypeId==facilityType.facilityTypeId}">
+    <form action="/Facility?action=updateFacility" method="post"
+          class="bg-light text-warning fw-bold w-50 shadow-lg p-5 mt-5">
+        <div class="d-flex justify-content-center">
+            <div>
+                <div class="form-text">Select facility to add</div>
+                <input type="hidden" name="idUpdate" value="${facility.facilityId}">
+                <select name="facilityTypeId" id="facilityType" onchange="updateFacilityType()"
+                        class="border-warning border-5 rounded-pill form-select-lg">
+                    <c:forEach items="${facilityTypeList}" var="facilityType">
                         <option value="${facilityType.facilityTypeId}">${facilityType.facilityTypeName}</option>
-                    </c:if>
-                </c:forEach>
+                    </c:forEach>
+                    <option value="none">Select facility type</option>
+                </select>
+            </div>
 
-                <c:forEach items="${facilityTypeList}" var="facilityType">
-                    <c:if test="${facility.facilityTypeId!=facilityType.facilityTypeId}">
-                        <option value="${facilityType.facilityTypeId}">${facilityType.facilityTypeName}</option>
-                    </c:if>
-                </c:forEach>
-
-                <option value="none">Select facility type</option>
-            </select>
         </div>
-        <p>ID</p>
-        <input type="text" readonly value="${facility.facilityId}" id="idUpdate" name="idUpdate">
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-md-6">
-                <p>Name</p>
-                <input type="text" placeholder="Name" name="name" value="${facility.facilityName}">
-
-                <p>Area</p>
-                <input type="text" placeholder="Area" name="area" value="${facility.area}">
-
-                <p>Cost</p>
-                <input type="text" placeholder="Cost" name="cost" value="${facility.cost}">
-
-                <p>Max people</p>
-                <input type="text" placeholder="Max people" name="maxPeople" value="${facility.maxPeople}">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" value="${facility.facilityName}"
+                           placeholder="Enter facility name" name="name" id="name">
+                </div>
+                <div class="mb-3">
+                    <label for="area" class="form-label">Area</label>
+                    <input type="text" class="form-control" id="area" value="${facility.area}" placeholder="Enter Area"
+                           name="area">
+                </div>
+                <div class="mb-3">
+                    <label for="cost" class="form-label">Cost</label>
+                    <input type="text" class="form-control" id="cost" value="${facility.cost}" placeholder="Enter Cost"
+                           name="cost">
+                </div>
+                <div class="mb-3">
+                    <label for="maxPeople" class="form-label">Max people</label>
+                    <input type="text" class="form-control" id="maxPeople" value="${facility.maxPeople}"
+                           placeholder="Enter Max people"
+                           name="maxPeople">
+                </div>
 
                 <p>Select Rent Type id</p>
-
-                <select name="rentTypeId" id="rentTypeId">
+                <select name="rentTypeId" id="rentTypeId" class="border-warning  form-control">
                     <c:forEach var="rentType" items="${rentTypeList}">
                         <c:if test="${facility.rentTypeId==rentType.rentTypeId}">
                             <option value="${rentType.rentTypeId}">${rentType.rentTypeName}</option>
@@ -119,66 +81,91 @@
                     </c:forEach>
                 </select>
 
-                <p>Select facility type id</p>
-                <%--        <select name="facilityTypeId" id="b">--%>
-                <%--            <c:forEach var="facilityType" items="${facilityTypeList}">--%>
-                <%--                <option value="${facilityType.facilityTypeId}">${facilityType.facilityTypeName}</option>--%>
-                <%--            </c:forEach>--%>
-                <%--        </select>--%>
-
             </div>
             <div class="col-md-6">
                 <div style="display: none" id="divStandardRoom">
-                    <p>standard room</p>
-                    <input type="text" placeholder="standard room" name="standardRoom" value="${facility.standardRoom}">
+                    <div class="mb-3">
+                        <label for="standardRoom" class="form-label">Standard room</label>
+                        <input type="text" class="form-control" id="standardRoom" value="${facility.standardRoom}"
+                               placeholder="Enter standard room"
+                               name="standardRoom">
+                    </div>
                 </div>
 
                 <div style="display: none" id="divDescriptionOtherConvenience">
-                    <p>description other convenience</p>
-                    <input type="text" placeholder="description other convenience" name="descriptionOtherConvenience" value="${facility.descriptionOtherConvenience}">
+                    <div class="mb-3">
+                        <label for="descriptionOtherConvenience" class="form-label">Description other
+                            convenience</label>
+                        <input type="text" class="form-control" id="descriptionOtherConvenience"
+                               value="${facility.descriptionOtherConvenience}"
+                               placeholder="Enter description other convenience" name="descriptionOtherConvenience">
+                    </div>
                 </div>
 
                 <div style="display: none" id="divPoolArea">
-                    <p>pool area</p>
-                    <input type="text" placeholder="pool area" name="poolArea" value="${facility.poolArea}">
+                    <div class="mb-3">
+                        <label for="poolArea" class="form-label">Pool area</label>
+                        <input type="text" class="form-control" id="poolArea" placeholder="Enter pool area"
+                               value="${facility.poolArea}" name="poolArea">
+                    </div>
                 </div>
 
                 <div style="display: none" id="divNumberOfFloor">
-                    <p>number of floor</p>
-                    <input type="text" placeholder="number of floor" name="numberOfFloor" value="${facility.numberOfFloor}">
+                    <div class="mb-3">
+                        <label for="numberOfFloor" class="form-label">Number of floor</label>
+                        <input type="text" class="form-control" id="numberOfFloor" placeholder="Enter number of floor"
+                               value="${facility.numberOfFloor}" name="numberOfFloor">
+                    </div>
                 </div>
 
                 <div style="display: none" id="divFacilityFree">
-                    <p>facility free</p>
-                    <input type="text" placeholder="facility free" name="facilityFree" value="${facility.facilityFree}">
+                    <div class="mb-3">
+                        <label for="facilityFree" class="form-label">facility free</label>
+                        <input type="text" class="form-control" id="facilityFree" placeholder="Enter facility free"
+                               value="${facility.facilityFree}" name="facilityFree">
+                    </div>
                 </div>
             </div>
-            <button>UPDATE</button>
         </div>
+        <div class="mt-5 d-flex justify-content-evenly">
+            <button class="btn btn-warning">UPDATE</button>
+            <a class="btn btn-primary" href="/Facility">Return Facility List</a>
 
+        </div>
+    </form>
+    <form action="">
+        <input type="hidden" id="firstFacilityTypeId" value="${facility.facilityTypeId}">
     </form>
 </div>
+<%--form control > css select-option--%>
+<%--Tự động bật modal thông báo thành công--%>
 <a href="/Facility">Return Facility List</a>
-
 <script>
-    let idDelete= document.getElementById("idUpdate").value;
-    window.onload=displayInput(idDelete);
-    function displayInput() {
-        let facilityChoice = document.getElementById("FacilityType").value;
-        console.log(facilityChoice);
+
+    window.onload = function () {
+        let firstFacilityTypeId = document.getElementById("firstFacilityTypeId").value;
+        document.getElementById("facilityType").value = firstFacilityTypeId;
+        displayInput(firstFacilityTypeId);
+    }
+    function updateFacilityType() {
+        let selectedFacilityTypeId = document.getElementById("facilityType").value;
+        displayInput(selectedFacilityTypeId);
+    }
+
+    function displayInput(firstFacilityTypeId) {
         let divStandardRoom = document.getElementById("divStandardRoom");
         let divDescriptionOtherConvenience = document.getElementById("divDescriptionOtherConvenience");
         let divPoolArea = document.getElementById("divPoolArea");
         let divNumberOfFloor = document.getElementById("divNumberOfFloor");
         let divFacilityFree = document.getElementById("divFacilityFree");
-        switch (facilityChoice) {
+        switch (firstFacilityTypeId) {
             case "none":
                 divStandardRoom.style.display = "none";
                 divDescriptionOtherConvenience.style.display = "none";
                 divPoolArea.style.display = "none";
                 divNumberOfFloor.style.display = "none";
                 divFacilityFree.style.display = "none";
-                break
+                break;
             case "1":
                 //villa
                 divStandardRoom.style.display = "block";
@@ -186,23 +173,31 @@
                 divPoolArea.style.display = "block";
                 divNumberOfFloor.style.display = "block";
                 divFacilityFree.style.display = "none";
-                break
+                document.getElementById("FacilityFree").value = "";
+                break;
             case "2":
                 //house
                 divStandardRoom.style.display = "block";
                 divDescriptionOtherConvenience.style.display = "block";
                 divPoolArea.style.display = "none";
+                document.getElementById("poolArea").value = 0;
+                divNumberOfFloor.style.display = "block";
                 divNumberOfFloor.style.display = "block";
                 divFacilityFree.style.display = "none";
-                break
+                document.getElementById("facilityFree").value = "";
+                break;
             case "3":
                 //room
                 divStandardRoom.style.display = "none";
+                document.getElementById("standardRoom").value = "";
                 divDescriptionOtherConvenience.style.display = "none";
+                document.getElementById("descriptionOtherConvenience").value = "";
                 divPoolArea.style.display = "none";
+                document.getElementById("poolArea").value = 0;
                 divNumberOfFloor.style.display = "none";
+                document.getElementById("numberOfFloor").value = 0;
                 divFacilityFree.style.display = "block";
-                break
+                break;
         }
     }
 </script>
@@ -229,7 +224,8 @@
                     <c:if test="${check=false}">
                         <p class="p-3 bg-danger text-center text-white w-50">SUCCESS</p>
                     </c:if>
-                </div>            </div>
+                </div>
+            </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">

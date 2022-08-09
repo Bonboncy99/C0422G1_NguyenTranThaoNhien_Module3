@@ -3,8 +3,6 @@ package controller;
 import model.facility.Facility;
 import model.facility.FacilityType;
 import model.facility.RentType;
-import model.people.Customer;
-import repository.facility.IFacilityrepository;
 import service.facility.IFacilityService;
 import service.facility.IFacilityTypeService;
 import service.facility.IRentTypeService;
@@ -17,6 +15,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "FacilityServlet", urlPatterns = {"/Facility"})
 public class FacilityServlet extends HttpServlet {
@@ -54,7 +53,7 @@ public class FacilityServlet extends HttpServlet {
         }
         switch (action){
             case "addFacility":
-                AddFacility(request,response);
+                addFacility(request,response);
                 break;
             case "updateFacility":
                 updateFacility(request,response);
@@ -75,6 +74,7 @@ public class FacilityServlet extends HttpServlet {
 
     private void showUpdateFacility(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("idUpdate"));
+        request.setAttribute("idUpdate",id);
         Facility facility = facilityService.findById(id);
         List<FacilityType> facilityTypeList = facilityTypeService.FindAll();
         List<RentType>rentTypeList = rentTypeService.FindAll();
@@ -129,21 +129,21 @@ public class FacilityServlet extends HttpServlet {
         double poolArea =Double.parseDouble(request.getParameter("poolArea"));
         int numberOfFloor= Integer.parseInt(request.getParameter("numberOfFloor"));
         String facilityFree = request.getParameter("facilityFree");
-        switch (facilityTypeId){
-            case 1:
-                facilityFree="";
-                break;
-            case 2:
-                facilityFree="";
-                poolArea=0;
-                break;
-            case 3:
-                standardRoom  = "";
-                descriptionOtherConvenience ="";
-                poolArea =0;
-                numberOfFloor=0;
-                break;
-        }
+//        switch (facilityTypeId){
+//            case 1:
+//                facilityFree="";
+//                break;
+//            case 2:
+//                facilityFree="";
+//                poolArea=0;
+//                break;
+//            case 3:
+//                standardRoom  = "";
+//                descriptionOtherConvenience ="";
+//                poolArea =0;
+//                numberOfFloor=0;
+//                break;
+//        }
 
         Facility facility = new Facility(id,facilityName,area,cost,maxPeople,
                 rentTypeId,facilityTypeId,standardRoom,descriptionOtherConvenience
@@ -158,7 +158,7 @@ public class FacilityServlet extends HttpServlet {
     }
 
 
-    private void AddFacility(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void addFacility(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          String facilityName = request.getParameter("name");
          int area= Integer.parseInt(request.getParameter("area"));
          double cost = Double.parseDouble(request.getParameter("cost"));
@@ -171,32 +171,25 @@ public class FacilityServlet extends HttpServlet {
          int numberOfFloor= Integer.parseInt(request.getParameter("numberOfFloor"));
          String facilityFree = request.getParameter("facilityFree");
 
-         switch (facilityTypeId){
-             case 1:
-                 facilityFree="";
-                 break;
-             case 2:
-                 facilityFree="";
-                 poolArea = 0;
-                 break;
-             case 3:
-                  standardRoom  = "";
-                  descriptionOtherConvenience ="";
-                  poolArea = 0;
-                  numberOfFloor = 0;
-                 break;
-         }
-
+        boolean check=false;
          Facility facility = new Facility(facilityName,area,cost,maxPeople,
                  rentTypeId,facilityTypeId,standardRoom,descriptionOtherConvenience
                  ,poolArea,numberOfFloor,facilityFree);
-         String message = "FAIL";
-         boolean check=false;
-         if (facilityService.addFacility(facility)) {
-             check = true;
-         }
+        Map<String,String>errorMap = facilityService.checkValidate(facility);
+        if (errorMap.isEmpty()){
+            String message = "FAIL";
+
+            if (facilityService.addFacility(facility)) {
+                check = true;
+            }
+        } else {
+            request.setAttribute("errorMap",errorMap);
+            request.setAttribute("facility",facility);
+        }
+
          request.setAttribute("check",check);
          RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/facility/add.jsp");
-         requestDispatcher.forward(request,response);
+         List<RentType>rentTypeList = rentTypeService.FindAll();
+        requestDispatcher.forward(request,response);
     }
 }

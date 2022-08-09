@@ -13,7 +13,7 @@
     <title>Add Customer</title>
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <style>
-        body{
+        body {
             background: url("https://img.freepik.com/free-vector/abstract-watercolor-pastel-background_87374-139.jpg?w=2000");
         }
     </style>
@@ -81,10 +81,10 @@
 
 <%--form add--%>
 <div class="d-flex justify-content-center m-5">
-    <form class="w-50 text-primary fw-bold shadow-lg p-5 bg-light" action="/Customer?action=addCustomer" method="post">
+    <form class="w-75 text-primary fw-bold shadow-lg p-5 bg-light" action="/Customer?action=addCustomer" method="post">
         <div class="row">
             <div class="col-md-6">
-                <div class="mb-3">
+                <div class="mb-3 mt-3">
                     <p>Select customer type</p>
                     <select class="form-control" name="customerType" id="customerType">
                         <c:forEach var="customerType" items="${customerTypeList}">
@@ -92,40 +92,67 @@
                         </c:forEach>
                     </select>
                 </div>
-                <div class="mb-3">
+
+                <%--       Tên khách hàng         --%>
+                <div class="mb-3 mt-3">
                     <label for="name" class="form-label">Enter name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter customer name" name="name">
+                    <input type="text" class="form-control" id="name" value="${customer.name}"
+                           placeholder="Enter customer name" name="name">
+                    <p class="text-danger">${errorList.get("name")}</p>
                 </div>
-                <div class="mb-3">
+
+                <%--Ngày sinh--%>
+                <div class="mb-3 mt-3">
                     <label for="birthday" class="form-label">Select birthday</label>
-                    <input type="date" class="form-control" name="dayOfBirth" id="birthday">
+                    <input type="date" class="form-control" name="dayOfBirth" id="birthday"
+                           value="${customer.dateOfBirth}">
+                    <p class="text-danger">${errorList.get("birthday")}</p>
                 </div>
-                <div class="mb-3">
+
+                <%--                giới tính--%>
+                <div class="mb-3 mt-3">
                     <p>Select gender</p>
-                    <select class=" form-control" name="gender" id="gender">
+                    <select class=" form-control" name="gender" id="gender" value="${customer.gender}">
                         <option value="true">Male</option>
                         <option value="false">Female</option>
                     </select>
                 </div>
             </div>
+
             <div class="col-md-6">
-                <div class="mb-3">
+                <%--                Số Cmnd--%>
+                <div class="mb-3 mt-3">
                     <label for="idCard" class="form-label">Enter Customer Id Card</label>
-                    <input type="text" class="form-control" placeholder="Enter customer Id Card" id="idCard"
-                           name="idCard">
+                    <input type="text" class="form-control" placeholder="Enter customer Id Card"
+                           value="${customer.idCard}" id="idCard" name="idCard">
+                    <p class="text-danger">${errorList.get("idCard")}</p>
                 </div>
-                <div class="mb-3">
+
+
+                <%-- Số điện thoại   --%>
+                <div class="mb-3 mt-3">
                     <label for="phone" class="form-label">Enter customer phone</label>
-                    <input type="text" class="form-control" placeholder="Enter customer phone" id="phone" name="phone">
+                    <input type="text" class="form-control" placeholder="Enter customer phone" id="phone" name="phone"
+                           value="${customer.phoneNumber}">
+                    <p class="text-danger">${errorList.get("phone")}</p>
                 </div>
-                <div class="mb-3">
+
+
+
+                <%--    email--%>
+                <div class="mb-3 mt-3">
                     <label for="email" class="form-label">Enter customer email</label>
-                    <input type="email" class="form-control" placeholder="Enter customer email" id="email" name="email">
+                    <input type="text   " class="form-control" placeholder="Enter customer email" id="email" name="email"
+                           value="${customer.email}">
+                    <p class="text-danger">${errorList.get("email")}</p>
                 </div>
-                <div class="mb-3">
+
+
+                <%--    Địa chỉ--%>
+                <div class="mb-3 mt-3">
                     <label for="address" class="form-label">Enter customer adress</label>
                     <input type="text" class="form-control" placeholder="Enter customer adress" id="address"
-                           name="address">
+                           value="${customer.address}" name="address">
                 </div>
             </div>
         </div>

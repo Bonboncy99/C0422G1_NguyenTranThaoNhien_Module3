@@ -41,8 +41,8 @@ public class FuramaServlet extends HttpServlet {
         requestDispatcher.forward(request,response);
     }
 
-    private void goToContractPage(HttpServletRequest request, HttpServletResponse response) {
-
+    private void goToContractPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/Contract").forward(request,response);
     }
 
     private void goToServicePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
